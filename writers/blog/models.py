@@ -8,3 +8,12 @@ class Author(models.Model):
 
     def __unicode__(self):
         return u"{}".format(self.name)
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=120)
+    body = models.TextField()
+    author = models.ForeignKey(Author)
+
+    def __unicode__(self):
+        return u"{}".format(self.title)

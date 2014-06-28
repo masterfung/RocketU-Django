@@ -46,9 +46,61 @@
       <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9445629" vertical-offset="50" max-vertical-offset="1092">
-              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.80597013" vertical-offset="102" max-vertical-offset="1300">
+              <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DjangoModelDependency/#writers" pinned="false" current="false" current-in-tab="false">
+        <entry file="uml://DjangoModelDependency/#writers">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>DjangoModelDependency</ID>
+              <OriginalElement>#writers</OriginalElement>
+              <nodes>
+                <node x="433.5" y="145.0">blog.models.User</node>
+                <node x="187.50000000000003" y="145.0">blog.models.Post</node>
+                <node x="206.00000000000003" y="0.0">blog.models.Author</node>
+                <node x="204.1748024211511" y="337.7814969735611">blog.models.Tag</node>
+                <node x="-90.9062063874008" y="321.5218503026439">Vote</node>
+                <node x="482.2121106244152" y="371.1259878942444">blog.models.Comment</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="blog.models.Comment" target="blog.models.User">
+                  <point x="50.0" y="-47.5" />
+                  <point x="0.0" y="58.5" />
+                </edge>
+                <edge source="blog.models.Comment" target="blog.models.Post">
+                  <point x="-50.0" y="-47.5" />
+                  <point x="462.0" y="287.0" />
+                  <point x="375.83333333333337" y="287.0" />
+                  <point x="75.33333333333331" y="58.5" />
+                </edge>
+                <edge source="blog.models.Post" target="blog.models.Author">
+                  <point x="0.0" y="-58.5" />
+                  <point x="0.0" y="47.5" />
+                </edge>
+                <edge source="blog.models.Tag" target="blog.models.Post">
+                  <point x="0.0" y="-36.5" />
+                  <point x="0.0" y="58.5" />
+                </edge>
+                <edge source="Vote" target="blog.models.Post">
+                  <point x="0.0" y="-36.5" />
+                  <point x="98.0" y="287.0" />
+                  <point x="225.1666666666667" y="287.0" />
+                  <point x="-75.33333333333331" y="58.5" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="1.353042931698526" x="-117.50056653724664" y="22.77103549610331" />
+              <SelectedNodes>
+                <node>blog.models.Tag</node>
+              </SelectedNodes>
+              <Categories>
+                <Category>Fields</Category>
+              </Categories>
             </state>
           </provider>
         </entry>
@@ -489,10 +541,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="uml://DjangoModelDependency/#writers">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DjangoModelDependency</ID>
+          <OriginalElement>#writers</OriginalElement>
+          <nodes>
+            <node x="433.5" y="145.0">blog.models.User</node>
+            <node x="187.50000000000003" y="145.0">blog.models.Post</node>
+            <node x="206.00000000000003" y="0.0">blog.models.Author</node>
+            <node x="204.1748024211511" y="337.7814969735611">blog.models.Tag</node>
+            <node x="-90.9062063874008" y="321.5218503026439">Vote</node>
+            <node x="482.2121106244152" y="371.1259878942444">blog.models.Comment</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="blog.models.Comment" target="blog.models.User">
+              <point x="50.0" y="-47.5" />
+              <point x="0.0" y="58.5" />
+            </edge>
+            <edge source="blog.models.Comment" target="blog.models.Post">
+              <point x="-50.0" y="-47.5" />
+              <point x="462.0" y="287.0" />
+              <point x="375.83333333333337" y="287.0" />
+              <point x="75.33333333333331" y="58.5" />
+            </edge>
+            <edge source="blog.models.Post" target="blog.models.Author">
+              <point x="0.0" y="-58.5" />
+              <point x="0.0" y="47.5" />
+            </edge>
+            <edge source="blog.models.Tag" target="blog.models.Post">
+              <point x="0.0" y="-36.5" />
+              <point x="0.0" y="58.5" />
+            </edge>
+            <edge source="Vote" target="blog.models.Post">
+              <point x="0.0" y="-36.5" />
+              <point x="98.0" y="287.0" />
+              <point x="225.1666666666667" y="287.0" />
+              <point x="-75.33333333333331" y="58.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.353042931698526" x="-117.50056653724664" y="22.77103549610331" />
+          <SelectedNodes>
+            <node>blog.models.Tag</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blog/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9445629" vertical-offset="50" max-vertical-offset="1092">
-          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.80597013" vertical-offset="102" max-vertical-offset="1300">
+          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
           <folding />
         </state>
       </provider>

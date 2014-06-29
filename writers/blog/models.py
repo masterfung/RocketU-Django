@@ -40,7 +40,8 @@ class Tag(models.Model):
 
 class Comment(models.Model):
 	text = models.TextField()
-	posts = models.ForeignKey(User)
+	posts = models.ForeignKey(Post)
+	user = models.ForeignKey(User)
 
 	def __unicode__(self):
 		return u"{}".format(self.text)

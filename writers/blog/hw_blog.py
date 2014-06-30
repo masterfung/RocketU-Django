@@ -30,7 +30,10 @@ print all_pk_1()
 
 
 #5
+def user_comments():
+	return User.objects.filter(user_comments__posts__author__name='Mark Twain') #with each __ it filters into!
 
+print user_comments()
 
 
 

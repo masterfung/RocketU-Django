@@ -10,20 +10,11 @@ class Author(models.Model):
 	def __unicode__(self):
 		return u"{}".format(self.name)
 
-class User(models.Model):
-	name = models.CharField(max_length=20)
-	email = models.EmailField(max_length=70)
-	username = models.CharField(max_length=20)
-
-	def __unicode__(self):
-		return u"{}".format(self.name)
-
 
 class Post(models.Model):
 	title = models.CharField(max_length=120)
 	body = models.TextField()
 	author = models.ForeignKey(Author, related_name='posts')
-	vote = models.ManyToManyField(User, related_name='person')
 
 	def __unicode__(self):
 		return u"{}".format(self.title)
@@ -37,11 +28,22 @@ class Tag(models.Model):
 		return u"{}".format(self.name)
 
 
+class User(models.Model):
+	name = models.CharField(max_length=20)
+	email = models.EmailField(max_length=70)
+	username = models.CharField(max_length=20)
+	vote = models.ManyToManyField(Post, related_name='uservotes')
+
+	def __unicode__(self):
+		return u"{}".format(self.name)
+
 
 class Comment(models.Model):
 	text = models.TextField()
-	posts = models.ForeignKey(Post)
-	user = models.ForeignKey(User)
+	posts = models.ForeignKey(Post, related_name='post_comments')
+	user = models.ForeignKey(User, related_name='user_comments')
 
 	def __unicode__(self):
 		return u"{}".format(self.text)
+
+

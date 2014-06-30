@@ -5,7 +5,8 @@ from django.db import models
 class Author(models.Model):
 	name = models.CharField(max_length=120)
 	twitter = models.CharField(max_length=40, null=True)
-
+	age = models.IntegerField(max_length=3, null=True)
+	location = models.CharField(max_length=30, null=True)
 
 	def __unicode__(self):
 		return u"{}".format(self.name)
@@ -30,6 +31,8 @@ class Tag(models.Model):
 
 class User(models.Model):
 	name = models.CharField(max_length=20)
+	age = models.IntegerField(max_length=3, null=True)
+	location = models.CharField(max_length=30, null=True)
 	email = models.EmailField(max_length=70)
 	username = models.CharField(max_length=20)
 	vote = models.ManyToManyField(Post, related_name='uservotes')

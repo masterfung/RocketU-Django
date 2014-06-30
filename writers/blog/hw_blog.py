@@ -1,3 +1,7 @@
+__author__ = '@masterfung'
+
+#Week 2 HW (Weekend)
+
 #1
 def return_blog_post_comment(post_id):
 	post = Post.objects.get(pk=post_id)

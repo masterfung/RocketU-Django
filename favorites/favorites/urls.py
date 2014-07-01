@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 	url(r"^$", 'hollywood.views.home', name='home'),
 	url(r'^genres/$', 'hollywood.views.genres', name='genres'),
+	url(r'^genres/new/$', 'hollywood.views.new_genre', name='new_genre'),
 )

@@ -88,4 +88,11 @@ try:
 except ImportError:
     pass
 
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'brochure/templates')]
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'static/static/templates')]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    'static/static',
+)
+
+MEDIA_URL = '/media/'

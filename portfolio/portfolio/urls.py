@@ -9,8 +9,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^hello/(?P<name>\w+)/(?P<color>\w+)$', 'brochure.views.hello'),
-	url(r'^var/(?P<name>\w+)$', 'brochure.views.variable'),
-	url(r"^scratchpad/(?P<first>\w+)/(?P<second>\w+)$", 'brochure.views.fizzbuzz'),
-	url(r"^justice/$", 'brochure.views.justice'),
+    url(r'^$', 'brochure.views.hello', name='home'),
+	url(r'^contact/$', 'brochure.views.contact'),
+	# url(r"^scratchpad/(?P<first>\w+)/(?P<second>\w+)$", 'brochure.views.fizzbuzz'),
+	url(r"^portfolio/$", 'brochure.views.portfolio', name='portfolio'),
 )

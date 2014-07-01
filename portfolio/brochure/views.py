@@ -3,20 +3,14 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def hello(request, name, color):
-	return render_to_response(
-		"hello.html",
-		{'name': name,
-		'color': color}
-	)
+def hello(request):
+	return render_to_response("index.html")
 
+def portfolio(request):
+	return render_to_response('portfolio.html')
 
-def justice(request):
-	return HttpResponse('Welcome to the world of Justice! Justice League. Assembled!!')
-
-
-def variable(request, name):
-	return HttpResponse("I love {}".format(name))
+def contact(request):
+	return render_to_response('contact.html')
 
 
 def fizzbuzz(request, first, second):

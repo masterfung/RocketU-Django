@@ -3,12 +3,13 @@
       {% include 'bootstrap.html' %}
       {% include 'style.html' %}
     </head>
-    <h1>Genres live here</h1>
+    <h1>Movies live here</h1>
     <ul>
-        {% for genre in genres %}
-            <li><a href="{% url "view_genre" genre.id %}">{{ genre.name }}</a></li>
+        {% for movie in movies %}
+            <li>{{ movie.name }}</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'new_movie' %}">Add new movie</a><br>
     <a href="{% url "home" %}">Back to Hollywood</a><br>
 
 </body>

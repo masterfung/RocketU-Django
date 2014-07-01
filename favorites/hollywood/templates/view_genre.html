@@ -1,0 +1,10 @@
+<body>
+    <head>
+      {% include 'bootstrap.html' %}
+      {% include 'style.html' %}
+    </head>
+
+    <h1>{{ genre.name }}</h1>
+    <a href="{% url "home" %}">Back to Hollywood<br></a>
+    <a href="{% url "genres" %}">Back to Genres</a>
+</body>

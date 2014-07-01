@@ -10,7 +10,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'brochure.views.hello', name='home'),
-	url(r'^contact/$', 'brochure.views.contact'),
+	url(r'^contact/$', 'brochure.views.contact', name='contact'),
 	# url(r"^scratchpad/(?P<first>\w+)/(?P<second>\w+)$", 'brochure.views.fizzbuzz'),
 	url(r"^portfolio/$", 'brochure.views.portfolio', name='portfolio'),
 )

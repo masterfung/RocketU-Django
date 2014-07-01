@@ -1,2 +1,3 @@
-writers/settings.py
-writers/settings.pyc
+*.pyc
+*.swp
+local_settings.py

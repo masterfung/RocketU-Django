@@ -1,10 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
 
 # Create your views here.
 
-def hello(request, name):
-	return HttpResponse("Hello, {}".format(name))
+def hello(request, name, color):
+	return render_to_response(
+		"hello.html",
+		{'name': name,
+		'color': color}
+	)
 
 
 def justice(request):

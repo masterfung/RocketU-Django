@@ -1,7 +1,12 @@
-<h1>Genres live here</h1>
-<ul>
-    {% for genre in genres %}
-        <li>{{ genre.name }}</li>
-    {% endfor %}
-</ul>
-<a href="{% url "home" %}">Back to Hollywood</a>
+<body>
+    {% include 'style.html' %}
+
+    <h1>Genres live here</h1>
+    <ul>
+        {% for genre in genres %}
+            <li>{{ genre.name }}</li>
+        {% endfor %}
+    </ul>
+    <button><a class="button-link" href="{% url "home" %}">Back to Hollywood</a></button>
+
+</body>

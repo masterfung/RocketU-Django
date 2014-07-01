@@ -4,7 +4,7 @@ from hollywood.models import Genre
 # Create your views here.
 
 def home(request):
-    return render(request, "home.html"),
+    return render(request, "home.html")
 
 def genres(request):
     genres = Genre.objects.all()

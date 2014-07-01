@@ -2,11 +2,25 @@ from django.db import models
 
 # Create your models here.
 
+class Location(models.Model):
+	fighting_location = models.CharField(max_length=50)
+
+	def __unicode__(self):
+		return u"{}".format(self.fighting_location)
+
+class Alliance(models.Model):
+	affiliation = models.CharField(max_length=20)
+
+	def __unicode__(self):
+		return u"{}".format(self.affiliation)
+
 class Player(models.Model):
 	superhero_name = models.CharField(max_length=120)
 	real_name = models.CharField(max_length=120)
 	type = models.CharField(max_length=5)
 	age = models.IntegerField(max_length=3)
+	location = models.ForeignKey(Location, related_name='locations')
+	affiliation = models.ForeignKey(Alliance, related_name='alliance')
 
 	def __unicode__(self):
 		return u"{}".format(self.real_name)
@@ -25,9 +39,3 @@ class Power(models.Model):
 	def __unicode__(self):
 		return u"{}".format(self.power)
 
-class Location(models.Model):
-	fighting_location = models.CharField(max_length=50)
-	tournament = models.ManyToManyField(Team, related_name='teams')
-
-	def __unicode__(self):
-		return u"{}".format(self.fighting_location)

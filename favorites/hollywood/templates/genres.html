@@ -1,0 +1,7 @@
+<h1>Genres live here</h1>
+<ul>
+    {% for genre in genres %}
+        <li>{{ genre.name }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url "home" %}">Back to Hollywood</a>

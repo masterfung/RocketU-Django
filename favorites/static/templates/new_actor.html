@@ -1,0 +1,17 @@
+<body>
+    <head>
+      {% include 'bootstrap.html' %}
+      {% include 'style.html' %}
+    </head>
+
+    <h1>Add new actor</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Add new actor" class="btn btn-lg btn-default"><br>
+    </form>
+
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
+
+    {% include 'footer.html' %}
+</body>

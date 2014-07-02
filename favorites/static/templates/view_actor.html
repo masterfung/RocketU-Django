@@ -4,12 +4,11 @@
       {% include 'style.html' %}
     </head>
 
-    <h1>{{ movie.name }}</h1>
-    <h2>{{ movie.release_year }}</h2>
-    <h3>{{ movie.genre }}</h3>
-
+    <h1>{{ actor.name }}</h1>
+    <h2>{{ actor.age }}</h2>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
-    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Back to Movie</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "actors" %}">Back to Actor</a></button>
 
     {% include 'footer.html' %}
+
 </body>

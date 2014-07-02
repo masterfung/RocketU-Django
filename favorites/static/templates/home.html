@@ -9,7 +9,9 @@
       <h2>We love movies!</h2>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "genres" %}">Genres</a></button>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Movies</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "actors" %}">Actors</a></button>
 
     {% include 'footer.html' %}
+<img src='{{ MEDIA_URL }}{{ image }}' class="img-responsive"/>
 
 </body>

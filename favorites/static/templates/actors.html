@@ -1,0 +1,15 @@
+<body>
+    <head>
+      {% include 'bootstrap.html' %}
+      {% include 'style.html' %}
+    </head>
+    <h1>Actors live here</h1>
+    <ul>
+        {% for actor in actors %}
+            <li><a href="{% url "view_actor" actor.id %}">{{ actor.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
+
+
+</body>

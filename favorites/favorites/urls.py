@@ -18,4 +18,5 @@ urlpatterns = patterns('',
 	url(r'^genres/(?P<genre_id>\w+)/$', 'hollywood.views.view_genre', name='view_genre'),
 	url(r'^movies/(?P<movie_id>\w+)/$', 'hollywood.views.view_movie', name='view_movie'),
 	url(r'^actors/(?P<actor_id>\w+)/$', 'hollywood.views.view_actor', name='view_actor'),
+	url(r'^genres/(?P<genre_id>\w+)/edit/$', 'hollywood.views.edit_genre', name='edit_genre'),
 )

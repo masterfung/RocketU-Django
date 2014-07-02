@@ -17,6 +17,7 @@ def movies(request):
 	movies = Movie.objects.all()
 	return render_to_response("movies.html", {'movies': movies})
 
+
 def actors(request):
 	actors = Actor.objects.all()
 	return render_to_response("actors.html", {'actors': actors})
@@ -65,6 +66,7 @@ def new_movie(request):
 	data = {'form': form}
 	return render(request, "new_movie.html", data)
 
+
 def new_actor(request):
 	# If the user is submitting the form
 	if request.method == "POST":
@@ -98,7 +100,30 @@ def view_movie(request, movie_id):
 	data = {"movie": movie}
 	return render(request, "view_movie.html", data)
 
+
 def view_actor(request, actor_id):
 	actor = Actor.objects.get(id=actor_id)
 	data = {"actor": actor}
 	return render(request, "view_actor.html", data)
+
+
+def edit_genre(request, genre_id):
+	# Similar to the the detail view, we have to find the existing genre we are editing
+	genre = Genre.objects.get(id=genre_id)
+
+	# We still check to see if we are submitting the form
+	if request.method == "POST":
+		# We prefill the form by passing 'instance', which is the specific
+		# object we are editing
+		form = GenreForm(request.POST, instance=genre)
+		if form.is_valid():
+			if form.save():
+				return redirect("/genres/{}".format(genre_id))
+
+	# Or just viewing the form
+	else:
+		# We prefill the form by passing 'instance', which is the specific
+		# object we are editing
+		form = GenreForm(instance=genre)
+	data = {"genre": genre, "form": form}
+	return render(request, "edit_genre.html", data)

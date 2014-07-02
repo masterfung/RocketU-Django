@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response, redirect
 from hollywood.models import Genre, Movie, Actor
-from hollywood.forms import GenreForm, MovieForm
+from hollywood.forms import GenreForm, MovieForm, ActorForm
 
 # Create your views here.
 
@@ -127,3 +127,62 @@ def edit_genre(request, genre_id):
 		form = GenreForm(instance=genre)
 	data = {"genre": genre, "form": form}
 	return render(request, "edit_genre.html", data)
+
+
+def edit_movie(request, movie_id):
+	# Similar to the the detail view, we have to find the existing genre we are editing
+	movie = Movie.objects.get(id=movie_id)
+
+	# We still check to see if we are submitting the form
+	if request.method == "POST":
+		# We prefill the form by passing 'instance', which is the specific
+		# object we are editing
+		form = MovieForm(request.POST, instance=movie)
+		if form.is_valid():
+			if form.save():
+				return redirect("/movies/{}".format(movie_id))
+
+	# Or just viewing the form
+	else:
+		# We prefill the form by passing 'instance', which is the specific
+		# object we are editing
+		form = MovieForm(instance=movie)
+	data = {"movie": movie, "form": form}
+	return render(request, "edit_movie.html", data)
+
+
+def edit_actor(request, actor_id):
+	# Similar to the the detail view, we have to find the existing genre we are editing
+	actor = Actor.objects.get(id=actor_id)
+
+	# We still check to see if we are submitting the form
+	if request.method == "POST":
+		# We prefill the form by passing 'instance', which is the specific
+		# object we are editing
+		form = ActorForm(request.POST, instance=actor)
+		if form.is_valid():
+			if form.save():
+				return redirect("/actors/{}".format(actor_id))
+
+	# Or just viewing the form
+	else:
+		# We prefill the form by passing 'instance', which is the specific
+		# object we are editing
+		form = ActorForm(instance=actor)
+	data = {"actor": actor, "form": form}
+	return render(request, "edit_actor.html", data)
+
+def delete_genre(request, genre_id):
+	genre = Genre.objects.get(id=genre_id)
+	genre.delete()
+	return redirect("/genres")
+
+def delete_actor(request, actor_id):
+	actor = Actor.objects.get(id=actor_id)
+	actor.delete()
+	return redirect("/actors")
+
+def delete_movie(request, movie_id):
+	movie = Movie.objects.get(id=movie_id)
+	movie.delete()
+	return redirect("/movies")

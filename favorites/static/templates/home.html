@@ -3,15 +3,18 @@
       {% include 'bootstrap.html' %}
       {% include 'style.html' %}
     </head>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <h1>Welcome to Hollywood!</h1>
 
-    <h1>Welcome to Hollywood!</h1>
-      <img src="http://www.24hourlocksmith-now.com/wp-content/uploads/2014/01/hollywood.jpg" alt="Hollywood"/>
-      <h2>We love movies!</h2>
-    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "genres" %}">Genres</a></button>
-    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Movies</a></button>
-    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "actors" %}">Actors</a></button>
+            <img class='img-responsive img-center' src="http://www.24hourlocksmith-now.com/wp-content/uploads/2014/01/hollywood.jpg" alt="Hollywood"/>
+            <h2>We love movies!</h2>
+            <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "genres" %}">Genres</a></button>
+            <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Movies</a></button>
+            <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "actors" %}">Actors</a></button>
 
-    {% include 'footer.html' %}
-<img src='{{ MEDIA_URL }}{{ image }}' class="img-responsive"/>
+            {% include 'footer.html' %}
+        </div>
+    </div>
 
 </body>

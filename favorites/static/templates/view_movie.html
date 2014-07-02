@@ -7,7 +7,13 @@
     <h1>{{ movie.name }}</h1>
     <h2>{{ movie.release_year }}</h2>
     <h3>{{ movie.genre }}</h3>
+    <h3>{{ movie.length }} mins</h3>
     <h3>IMDB Link: {{ movie.imdb }}</h3>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "edit_movie" movie.id %}">Edit movie</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "delete_movie" movie.id %}">Delete movie</a></button>
+
+    <br/>
+    <br/>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Back to Movie</a></button>
 

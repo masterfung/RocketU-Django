@@ -6,10 +6,13 @@
     <h1>Movies live here</h1>
     <ul>
         {% for movie in movies %}
-            <li>{{ movie.name }}</li>
+            <li><a href="{% url "view_movie" movie.id %}">{{ movie.name }}</a></li>
         {% endfor %}
     </ul>
-    <a href="{% url 'new_movie' %}">Add new movie</a><br>
-    <a href="{% url "home" %}">Back to Hollywood</a><br>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url 'new_movie' %}">Add new movie</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
+
+    {% include 'footer.html' %}
 
 </body>
+

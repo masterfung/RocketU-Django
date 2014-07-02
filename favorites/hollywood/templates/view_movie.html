@@ -4,9 +4,12 @@
       {% include 'style.html' %}
     </head>
 
-    <h1>{{ genre.name }}</h1>
+    <h1>{{ movie.name }}</h1>
+    <h2>{{ movie.release_year }}</h2>
+    <h3>{{ movie.genre }}</h3>
+
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
-    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "genres" %}">Back to Genres</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Back to Movie</a></button>
 
     {% include 'footer.html' %}
 </body>

@@ -7,8 +7,9 @@
     <h1>Welcome to Hollywood!</h1>
       <img src="http://www.24hourlocksmith-now.com/wp-content/uploads/2014/01/hollywood.jpg" alt="Hollywood"/>
       <h2>We love movies!</h2>
-    <a href="{% url "genres" %}">Genres</a><br>
-    <a href="{% url "movies" %}">Movies</a><br>
-    <p>Authored by: Johnny</p>
-    <p>Powered by: Django</p>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "genres" %}">Genres</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Movies</a></button>
+
+    {% include 'footer.html' %}
+
 </body>

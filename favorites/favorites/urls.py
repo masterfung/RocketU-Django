@@ -15,4 +15,5 @@ urlpatterns = patterns('',
 	url(r'^genres/new/$', 'hollywood.views.new_genre', name='new_genre'),
 	url(r'^movie/new/$', 'hollywood.views.new_movie', name='new_movie'),
 	url(r'^genres/(?P<genre_id>\w+)/$', 'hollywood.views.view_genre', name='view_genre'),
+	url(r'^movies/(?P<movie_id>\w+)/$', 'hollywood.views.view_movie', name='view_movie'),
 )

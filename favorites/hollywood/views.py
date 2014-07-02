@@ -17,6 +17,7 @@ def movies(request):
 	movies = Movie.objects.all()
 	return render_to_response("movies.html", {'movies': movies})
 
+
 def new_genre(request):
 	# If the user is submitting the form
 	if request.method == "POST":
@@ -37,6 +38,7 @@ def new_genre(request):
 		form = GenreForm()
 	data = {'form': form}
 	return render(request, "new_genre.html", data)
+
 
 def new_movie(request):
 	# If the user is submitting the form
@@ -59,7 +61,14 @@ def new_movie(request):
 	data = {'form': form}
 	return render(request, "new_movie.html", data)
 
+
 def view_genre(request, genre_id):
-    genre = Genre.objects.get(id=genre_id)
-    data = {"genre": genre}
-    return render(request, "view_genre.html", data)
+	genre = Genre.objects.get(id=genre_id)
+	data = {"genre": genre}
+	return render(request, "view_genre.html", data)
+
+
+def view_movie(request, movie_id):
+	movie = Movie.objects.get(id=movie_id)
+	data = {"movie": movie}
+	return render(request, "view_movie.html", data)

@@ -108,8 +108,7 @@ def tag_logic(request):
 		if form.is_valid():
 			# Get the instance of the form filled with the submitted data
 			name = form.cleaned_data['name']
-			post = form.cleaned_data['post']
-			Tag.objects.create(name=name, posts=post)
+			Tag.objects.create(name=name)
 
 			return redirect("/tags")
 

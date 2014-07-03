@@ -1,0 +1,24 @@
+{#NEED#}
+{% extends 'base.html' %}
+
+{% block title %}
+View Comments
+{% endblock title %}
+
+{% block content %}
+    <h1>Tags</h1>
+    <ul>
+        {% for tag in tags %}
+            <li><a href="{% url "my_comment" %}">{{ tag.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "comment-form" %}">Edit Comments</a></button>
+{#    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "delete_actor" actor.id %}">Delete Actor</a></button>#}
+
+    <br/>
+    <br/>
+{#    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>#}
+{#    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "actors" %}">Back to Actor</a></button>#}
+
+{%  endblock content %}

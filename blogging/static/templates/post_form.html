@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Add Comment to Author Post
+Add New Post
 {% endblock title %}
 
 {% block content %}
-<h1>Add New Author</h1>
+<h1>Add New Post</h1>
 <form method='POST'>
     {% csrf_token %}
     <ol>
-    {{ author_form.as_p }}
+    {{ post_form.as_p }}
     </ol>
-    <input type='submit' value='Submit author' />
+    <input type='submit' value='Submit post' />
 </form>
 
 

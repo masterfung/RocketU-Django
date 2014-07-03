@@ -18,3 +18,13 @@ class AuthorForm(forms.Form):
 	twitter = forms.CharField(max_length=40)
 	age = forms.IntegerField()
 	location = forms.CharField(max_length=30)
+
+class PostForm(forms.Form):
+	title = forms.CharField(max_length=120)
+	body = forms.CharField(max_length=500)
+	author = forms.ModelChoiceField(Author.objects.all())
+
+
+class TagForm(forms.Form):
+	name = forms.CharField(max_length=20)
+	post = forms.ModelChoiceField(Post.objects.all())

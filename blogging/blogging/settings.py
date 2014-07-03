@@ -87,3 +87,7 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+TEMPLATE_DIRS = (
+	os.path.join(BASE_DIR, 'static', 'templates'),
+)

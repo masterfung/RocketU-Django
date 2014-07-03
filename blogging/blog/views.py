@@ -8,7 +8,7 @@ def comments(request):
 	return render_to_response("view_comments.html", {'comments': comments})
 
 def authors(request):
-	authors = Comment.objects.all()
+	authors = Author.objects.all()
 	return render_to_response("view_authors.html", {'authors': authors})
 
 #forms

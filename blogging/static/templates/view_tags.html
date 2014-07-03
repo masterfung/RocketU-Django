@@ -1,19 +1,18 @@
-{#NEED#}
 {% extends 'base.html' %}
 
 {% block title %}
-View Comments
+View Tag
 {% endblock title %}
 
 {% block content %}
     <h1>Tags</h1>
     <ul>
         {% for tag in tags %}
-            <li><a href="{% url "my_comment" %}">{{ tag.name }}</a></li>
+            <li><a href="{% url "my_tag" %}">{{ tag.name }}</a></li>
         {% endfor %}
     </ul>
 
-    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "comment-form" %}">Edit Comments</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "tag-form" %}">Add New Tags</a></button>
 {#    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "delete_actor" actor.id %}">Delete Actor</a></button>#}
 
     <br/>

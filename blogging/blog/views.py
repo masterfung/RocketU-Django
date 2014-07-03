@@ -3,6 +3,9 @@ from blog.models import Comment, Author, Post, Tag
 from blog.forms import CommentForm, AuthorForm, PostForm, TagForm
 
 
+def home(request):
+	return render(request, "home.html")
+
 def comments(request):
 	comments = Comment.objects.all()
 	return render_to_response("view_comments.html", {'comments': comments})
@@ -106,7 +109,7 @@ def tag_logic(request):
 			# Get the instance of the form filled with the submitted data
 			name = form.cleaned_data['name']
 			post = form.cleaned_data['post']
-			Tag.objects.create(posts=post, name=name)
+			Tag.objects.create(name=name, posts=post)
 
 			return redirect("/tags")
 

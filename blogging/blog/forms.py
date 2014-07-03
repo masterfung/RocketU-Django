@@ -24,7 +24,6 @@ class PostForm(forms.Form):
 	body = forms.CharField(max_length=500)
 	author = forms.ModelChoiceField(Author.objects.all())
 
-
 class TagForm(forms.Form):
 	name = forms.CharField(max_length=20)
 	post = forms.ModelChoiceField(Post.objects.all())

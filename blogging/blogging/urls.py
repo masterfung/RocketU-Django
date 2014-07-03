@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+	url(r'^$', 'blog.views.home', name='home'),
 	url(r'^comment-form/$', 'blog.views.comment_logic', name='comment-form'),
 	url(r'^author-form/$', 'blog.views.author_logic', name='author-form'),
 	url(r'^tag-form/$', 'blog.views.tag_logic', name='tag-form'),

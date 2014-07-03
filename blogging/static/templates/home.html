@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home to Blog Blog
+{% endblock title %}
+{% block content %}
+
+    <h1>Welcome!</h1>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "author-form" %}">Add New Authors</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "comment-form" %}">Add New Comment</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "post-form" %}">Add New Post</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "tag-form" %}">Add New Tag</a></button>
+
+
+{% endblock content %}

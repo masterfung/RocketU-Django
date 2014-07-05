@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 	url(r'^$', views.index, name='index'),
     # ex: /polls/5/
     url(r'^(?P<poll_id>\d+)/$', views.detail, name='detail'),
+	url(r'^polls/', include('practice.urls', namespace="practice")),
     # ex: /polls/5/results/
     url(r'^(?P<poll_id>\d+)/results/$', views.results, name='results'),
     # ex: /polls/5/vote/

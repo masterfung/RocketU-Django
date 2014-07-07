@@ -15,12 +15,24 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'hollywood', ['Genre'])
 
+        # Adding model 'Video'
+        db.create_table(u'hollywood_video', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=150)),
+            ('video', self.gf('embed_video.fields.EmbedVideoField')(max_length=200)),
+        ))
+        db.send_create_signal(u'hollywood', ['Video'])
+
         # Adding model 'Movie'
         db.create_table(u'hollywood_movie', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('release_year', self.gf('django.db.models.fields.PositiveSmallIntegerField')()),
+            ('length', self.gf('django.db.models.fields.PositiveSmallIntegerField')()),
+            ('picture', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('imdb', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('genre', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['hollywood.Genre'])),
+            ('video', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['hollywood.Video'])),
         ))
         db.send_create_signal(u'hollywood', ['Movie'])
 
@@ -45,6 +57,9 @@ class Migration(SchemaMigration):
     def backwards(self, orm):
         # Deleting model 'Genre'
         db.delete_table(u'hollywood_genre')
+
+        # Deleting model 'Video'
+        db.delete_table(u'hollywood_video')
 
         # Deleting model 'Movie'
         db.delete_table(u'hollywood_movie')
@@ -73,8 +88,18 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Movie'},
             'genre': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['hollywood.Genre']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'imdb': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
+            'length': ('django.db.models.fields.PositiveSmallIntegerField', [], {}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'release_year': ('django.db.models.fields.PositiveSmallIntegerField', [], {})
+            'picture': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'release_year': ('django.db.models.fields.PositiveSmallIntegerField', [], {}),
+            'video': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['hollywood.Video']"})
+        },
+        u'hollywood.video': {
+            'Meta': {'object_name': 'Video'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '150'}),
+            'video': ('embed_video.fields.EmbedVideoField', [], {'max_length': '200'})
         }
     }
 

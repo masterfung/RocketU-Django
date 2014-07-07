@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, redirect
+from django.shortcuts import render, render_to_response, redirect, RequestContext
 from hollywood.models import Genre, Movie, Actor
 from hollywood.forms import GenreForm, MovieForm, ActorForm
 

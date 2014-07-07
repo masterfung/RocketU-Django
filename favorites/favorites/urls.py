@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+from django.conf import settings
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -10,6 +12,12 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 	url(r"^$", 'hollywood.views.home', name='home'),
+	(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.STATIC_ROOT
+        }),
+	(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT, 'show_indexes': False
+        }),
 	url(r'^genres/$', 'hollywood.views.genres', name='genres'),
 	url(r'^movies/$', 'hollywood.views.movies', name='movies'),
 	url(r'^actors/$', 'hollywood.views.actors', name='actors'),

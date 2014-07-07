@@ -37,6 +37,7 @@ INSTALLED_APPS = (
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+	'embed_video',
 	'south',
 	'hollywood',
 )
@@ -86,19 +87,19 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-try:
-	from local_settings import *
-except ImportError:
-	pass
-
 TEMPLATE_DIRS = (
 	os.path.join(BASE_DIR, 'static', 'templates'),
 )
 
 STATICFILES_DIRS = (
-	os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), 'static', 'static'),
+	os.path.join(BASE_DIR, 'static', 'static'),
 )
 
-STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), 'static', 'static-only')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static-only')
 
-MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), 'static/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
+
+try:
+	from local_settings import *
+except ImportError:
+	pass

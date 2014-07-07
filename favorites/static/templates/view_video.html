@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
+{% load embed_video_tags %}
 <body>
+    <head>
+      {% include 'bootstrap.html' %}
+      {% include 'style.html' %}
+    </head>
 
+    <h1>{{ movie.name }}</h1>
+    <h2>{% video movie.video.video 'small' %}</h2>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "edit_video" video.id %}">Edit video</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "delete_video" video.id %}">Delete video</a></button>
+
+    <br/>
+    <br/>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Back to Movie</a></button>
+
+    {% include 'footer.html' %}
 </body>
-</html>

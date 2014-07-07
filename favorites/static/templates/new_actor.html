@@ -10,7 +10,11 @@
         {{ form.as_p }}
         <input type="submit" value="Add new actor" class="btn btn-lg btn-default"><br>
     </form>
-
+    <div class="buttons">
+        <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "genres" %}">Genres</a></button>
+        <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Movies</a></button>
+        <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "videos" %}">Videos</a></button>
+    </div>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
 
     {% include 'footer.html' %}

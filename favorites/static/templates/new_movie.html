@@ -11,19 +11,11 @@
         <input type="submit" value="Add new movie" class="btn btn-lg btn-default"><br>
     </form>
 
-    {% load embed_video_tags %}
-
-    The video tag:
-    {% video item.video as my_video %}
-      URL: {{ my_video.url }}
-      Thumbnail: {{ my_video.thumbnail }}
-      Backend: {{ my_video.backend }}
-
-      {% video my_video "large" %}
-    {% endvideo %}
-
-    Or embed shortcut:
-    {% video my_video '800x600' %}
+    <div class="buttons">
+        <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "genres" %}">Genres</a></button>
+        <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "videos" %}">Videos</a></button>
+        <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "actors" %}">Actors</a></button>
+    </div>
 
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
 

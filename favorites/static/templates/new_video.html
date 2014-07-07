@@ -1,0 +1,23 @@
+<body>
+    <head>
+      {% include 'bootstrap.html' %}
+      {% include 'style.html' %}
+    </head>
+
+    <h1>Add new video</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add new video" class="btn btn-lg btn-default"><br>
+    </form>
+
+    <div class="buttons">
+        <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "genres" %}">Genres</a></button>
+        <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "movies" %}">Movies</a></button>
+        <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "actors" %}">Actors</a></button>
+    </div>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
+
+
+    {% include 'footer.html' %}
+</body>

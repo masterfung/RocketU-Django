@@ -23,7 +23,7 @@ def actors(request):
 	return render_to_response("actors.html", {'actors': actors})
 
 
-def video(request):
+def videos(request):
 	video = Video.objects.all()
 	return render_to_response("videos.html", {'videos': videos})
 

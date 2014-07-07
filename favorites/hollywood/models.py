@@ -22,8 +22,8 @@ class Movie(models.Model):
 	length = models.PositiveSmallIntegerField()
 	picture = models.ImageField(upload_to='movies/')
 	imdb = models.CharField(max_length=200)
-	genre = models.ForeignKey(Genre)
-	video = models.ForeignKey(Video)
+	genre = models.ForeignKey(Genre, related_name='genres')
+	video = models.ForeignKey(Video, related_name='videos')
 
 	def __unicode__(self):
 		return self.name

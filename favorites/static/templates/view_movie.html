@@ -9,12 +9,12 @@
     <div class="img-container">
         <a href="{{ movie.imdb }}"><img src="{{ MEDIA_URL }}{{ movie.picture }}" alt="" class="img-responsive"/></a>
     </div>
-    <h2>{{ movie.release_year }}</h2>
-    <h3>{{ movie.genre }}</h3>
-    <h3>{{ movie.length }} mins</h3>
-    <h3>
-        {{ link.url|embed:'560x315' }}
-    </h3>
+    <div class="buttons">
+        <h2>{{ movie.release_year }}</h2>
+        <h3>{{ movie.genre }}</h3>
+        <h3>{{ movie.length }} mins</h3>
+        <h3>{% video movie.video.video 'small' %}</h3>
+    </div>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "edit_movie" movie.id %}">Edit movie</a></button>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "delete_movie" movie.id %}">Delete movie</a></button>
 

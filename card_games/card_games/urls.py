@@ -15,4 +15,6 @@ urlpatterns = patterns('',
 	url(r'^spades/$', 'cards.views.spades', name='spades'),
 	url(r'^faces/$', 'cards.views.faces', name='faces'),
 	url(r'^cards_filters/$', 'cards.views.cards_filters', name='cards_filters'),
+	url(r'^cards_filters/filters/$', 'cards.views.custom_filters', name='custom_filters'),
+	url(r'^tags/$', 'cards.views.tags', name='tags'),
 )

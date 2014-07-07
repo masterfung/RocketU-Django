@@ -1,6 +1,6 @@
 <div>
     {% for card in cards %}
-        <p>Suit: {{ card.get_suit_display }}, Rank: {{ card.rank }}</p>
+        <p>Suit: {{ card.get_suit_display }}, Rank: {{ card.rank | first}}</p>
     {% endfor %}
 </div>
         

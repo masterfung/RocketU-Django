@@ -48,3 +48,17 @@ def cards_filters(request):
 	}
 
 	return render(request, 'cards_filters.html', data)
+
+def tags(request):
+	data = {
+		'cards': Card.objects.all()
+	}
+
+	return render(request, 'tags.html', data)
+
+def custom_filters(request):
+	data = {
+		'cards': Card.objects.all()
+	}
+
+	return render(request, 'custom_filters.html', data)

@@ -6,5 +6,7 @@ We have {{ cards | length }} cards!
             Capitalized Suit: {{ card.get_suit_display | capfirst }} <br>
             Uppercased Rank: {{ card.rank | upper }}
         </p>
+
+        <a href="{% url 'cards_filters' %}">Card Filters</a>
     </div>
 {% endfor %}

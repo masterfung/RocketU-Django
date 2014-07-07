@@ -1,0 +1,11 @@
+<h1>Spades Or Not</h1>
+<div>
+    {% for spade in spades %}
+        {% if spade.get_suit_display == 'spade'%}
+            <p>This is just a spade card.</p>
+        {% else %}
+            <p>Card: {{ spade.get_suit_display }}</p>
+            <p>Rank: {{ spade.rank }}</p>
+        {% endif %}
+    {%  endfor %}
+</div>

@@ -1,0 +1,9 @@
+<h1>Hearts or Diamonds</h1>
+<div>
+    {% for choice in choices %}
+        {% if choice.get_suit_display == 'diamond' or choice.get_suit_display == 'heart'%}
+            <p>Card: {{ choice.get_suit_display }}</p>
+            <p>Rank: {{ choice.rank }}</p>
+        {% endif %}
+    {%  endfor %}
+</div>

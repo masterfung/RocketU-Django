@@ -874,7 +874,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1144">
           <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="false" />
           </folding>
         </state>
       </provider>

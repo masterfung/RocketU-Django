@@ -1,0 +1,11 @@
+<h1>Face Cards Only</h1>
+<div>
+    {% for face in faces %}
+        {% if face.rank == 'ace' or face.rank == 'king' or face.rank == 'queen' or face.rank == 'jack'%}
+            <p>Card: {{ face.get_suit_display }}</p>
+            <p>Rank: {{ face.rank }}</p>
+        {% else %}
+            <p>Aint nobody got time for no faces. You have been warned!</p>
+        {% endif %}
+    {%  endfor %}
+</div>

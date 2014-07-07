@@ -44,7 +44,6 @@ def faces(request):
 
     return render(request, 'face.html', data)
 
-
 def cards_filters(request):
     data = {
         'cards': Card.objects.all()
@@ -85,7 +84,7 @@ def deal(request):
 
 def blackjack(request):
     """
-    ? is random number generator while :5 select the first five cards for the player.
+    ? is random number generator while :5 select the first two cards for the player.
     """
     data = {'cards': Card.objects.order_by('?')[:2]}
 
@@ -101,15 +100,18 @@ def poker(request):
     return render(request, 'poker.html', data)
 
 def hearts(request):
-    data = {
-        'cards': Card.objects.all()
-    }
+    '''
+    Card.HEART is a better way for other people to refer to since we created this in our models.
+    '''
+    data = {'cards': Card.objects.filter(suit=Card.HEART)}
 
     return render(request, 'hearts.html', data)
 
+
 def no_faces(request):
-    data = {
-        'cards': Card.objects.all()
-    }
+    '''
+    Need to show, in a dictionary!!!! The use of 'in' is better than using exclude chaining.
+    '''
+    data = {'cards': Card.objects.exclude(rank__in=['jack', 'queen', 'king','ace'])}
 
     return render(request, 'no_faces.html', data)

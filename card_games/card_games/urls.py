@@ -21,6 +21,7 @@ urlpatterns = patterns('',
 	url(r'^faq/$', 'cards.views.faq', name='faq'),
 	url(r'^deal/$', 'cards.views.deal', name='deal'),
 	url(r'^blackjack/$', 'cards.views.blackjack', name='blackjack'),
+	url(r'^poker/$', 'cards.views.poker', name='poker'),
 	url(r'^hearts/$', 'cards.views.hearts', name='hearts'),
 	url(r'^no_faces/$', 'cards.views.no_faces', name='no_faces'),
 )

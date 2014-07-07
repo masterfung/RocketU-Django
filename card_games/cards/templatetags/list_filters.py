@@ -31,3 +31,4 @@ def shuffle(cards):
 @register.filter
 def deal(list, amount):
 	return list[:amount]
+

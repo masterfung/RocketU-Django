@@ -1,0 +1,12 @@
+{% extends 'base_template.html' %}
+{% load list_filters %}
+
+{% block title %}
+No Face Cards Only
+{% endblock title %}
+
+{% block content %}
+    <h2>No Faces</h2>
+    <p>Here's your hand...</p>
+    {% include 'includes/hand.html' %}
+{% endblock content %}

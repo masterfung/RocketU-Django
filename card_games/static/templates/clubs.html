@@ -1,4 +1,10 @@
-<h1>Clubs</h1>
+{% extends 'base_template.html' %}
+
+{% block title %}
+Blub
+{% endblock title %}
+
+{% block content %}
 <div>
     {% for club in clubs %}
         {% if club.get_suit_display == 'club' %}
@@ -6,3 +12,4 @@
         {% endif %}
     {%  endfor %}
 </div>
+{% endblock content %}

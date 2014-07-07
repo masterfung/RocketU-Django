@@ -6,7 +6,7 @@ Hearts Only
 {% endblock title %}
 
 {% block content %}
-    {% for card in cards|suit:"heart" %}
-        <p>Suit: {{ card.get_suit_display }}, Rank: {{ card.rank }}</p>
-    {% endfor %}
+    <h2>Hearts</h2>
+    <p>Here's your hand...</p>
+    {% include 'includes/hand.html' %}
 {% endblock content %}

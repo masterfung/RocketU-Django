@@ -28,12 +28,14 @@ def diamonds_hearts(request):
 
 	return render(request, 'diamonds_heart.html', data)
 
+
 def spades(request):
 	data = {
 		'spades': Card.objects.all()
 	}
 
 	return render(request, 'spades.html', data)
+
 
 def faces(request):
 	data = {
@@ -42,12 +44,14 @@ def faces(request):
 
 	return render(request, 'face.html', data)
 
+
 def cards_filters(request):
 	data = {
 		'cards': Card.objects.all()
 	}
 
 	return render(request, 'cards_filters.html', data)
+
 
 def tags(request):
 	data = {
@@ -56,9 +60,33 @@ def tags(request):
 
 	return render(request, 'tags.html', data)
 
+
 def custom_filters(request):
 	data = {
 		'cards': Card.objects.all()
 	}
 
 	return render(request, 'custom_filters.html', data)
+
+
+def profile(request):
+	return render(request, 'profile.html')
+
+
+def faq(request):
+	return render(request, 'faq.html')
+
+
+def deal(request):
+	data = {
+		'cards': Card.objects.all()
+	}
+	return render(request, 'deal.html', data)
+
+
+def blackjack(request):
+	data = {
+		'cards': Card.objects.order_by('?')[:2]
+	}
+
+	return render(request, 'blackjack.html', data)

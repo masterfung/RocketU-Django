@@ -3,3 +3,21 @@
 {% for card in cards|suit:"diamond" %}
     <p>Suit: {{ card.get_suit_display }}, Rank: {{ card.rank }}</p>
 {% endfor %}
+
+<h1>Aces</h1>
+
+{% for card in cards|ace %}
+    <p>Suit: {{ card.get_suit_display }}, Rank: {{ card.rank }}</p>
+{% endfor %}
+
+<h1>Rank</h1>
+
+{% for card in cards|rank:"two" %}
+    <p>Suit: {{ card.get_suit_display }}, Rank: {{ card.rank }}</p>
+{% endfor %}
+
+<h1>Random and Deal</h1>
+
+{#{% for card in cards|shuffle|deal:5 %}#}
+{#    <p>Suit: {{ card.get_suit_display }}, Rank: {{ card.rank }}</p>#}
+{#{% endfor %}#}

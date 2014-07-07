@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+<div>
+    <a href="{% url 'profile' %}">Profile</a> |  <a href="{% url 'faq' %}">FAQ</a>
+    |  <a href="{% url 'deal' %}">Deal</a> |  <a href="{% url 'blackjack' %}">Blackjack</a>
+</div>
+<h1>Welcome to our Card Game!</h1>
+{% block content %}
+
+{% endblock content %}
+
+{% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,8 @@
+<h1>Clubs</h1>
+<div>
+    {% for club in clubs %}
+        {% if club.get_suit_display == 'club' %}
+            <p>Rank: {{ club.rank }}</p>
+        {% endif %}
+    {%  endfor %}
+</div>

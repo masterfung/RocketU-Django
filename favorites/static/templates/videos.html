@@ -1,0 +1,18 @@
+<body>
+    <head>
+      {% include 'bootstrap.html' %}
+      {% include 'style.html' %}
+    </head>
+    <h1>Videos live here</h1>
+    <ul>
+        {% for video in videos %}
+            <li><a href="{% url "view_video" video.id %}">{{ video.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url 'new_video' %}">Add new video</a></button>
+    <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "home" %}">Back to Hollywood</a></button>
+
+    {% include 'footer.html' %}
+
+</body>
+

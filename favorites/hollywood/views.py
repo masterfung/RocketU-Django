@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response, redirect, RequestContext
-from hollywood.models import Genre, Movie, Actor
-from hollywood.forms import GenreForm, MovieForm, ActorForm
+from hollywood.models import Genre, Movie, Actor, Video
+from hollywood.forms import GenreForm, MovieForm, ActorForm, VideoForm
 
 # Create your views here.
 
@@ -21,6 +21,11 @@ def movies(request):
 def actors(request):
 	actors = Actor.objects.all()
 	return render_to_response("actors.html", {'actors': actors})
+
+
+def video(request):
+	video = Video.objects.all()
+	return render_to_response("videos.html", {'videos': videos})
 
 
 def new_genre(request):
@@ -88,6 +93,27 @@ def new_actor(request):
 	data = {'form': form}
 	return render(request, "new_actor.html", data)
 
+def new_video(request):
+	# If the user is submitting the form
+	if request.method == "POST":
+
+		# Get the instance of the form filled with the submitted data
+		form = VideoForm(request.POST)
+
+		# Django will check the form's validity for you
+		if form.is_valid():
+
+			# Saving the form will create a new Genre object
+			if form.save():
+				# After saving, redirect the user back to the index page
+				return redirect("/videos")
+
+	# Else if the user is looking at the form page
+	else:
+		form = VideoForm()
+	data = {'form': form}
+	return render(request, "new_video.html", data)
+
 
 def view_genre(request, genre_id):
 	genre = Genre.objects.get(id=genre_id)
@@ -105,6 +131,11 @@ def view_actor(request, actor_id):
 	actor = Actor.objects.get(id=actor_id)
 	data = {"actor": actor}
 	return render(request, "view_actor.html", data)
+
+def view_video(request, video_id):
+	video = Video.objects.get(id=video_id)
+	data = {"video": video}
+	return render(request, "view_video.html", data)
 
 
 def edit_genre(request, genre_id):
@@ -172,6 +203,27 @@ def edit_actor(request, actor_id):
 	data = {"actor": actor, "form": form}
 	return render(request, "edit_actor.html", data)
 
+def edit_video(request, video_id):
+	# Similar to the the detail view, we have to find the existing genre we are editing
+	video = Video.objects.get(id=video_id)
+
+	# We still check to see if we are submitting the form
+	if request.method == "POST":
+		# We prefill the form by passing 'instance', which is the specific
+		# object we are editing
+		form = VideoForm(request.POST, instance=video)
+		if form.is_valid():
+			if form.save():
+				return redirect("/videos/{}".format(video_id))
+
+	# Or just viewing the form
+	else:
+		# We prefill the form by passing 'instance', which is the specific
+		# object we are editing
+		form = VideoForm(instance=video)
+	data = {"video": video, "form": form}
+	return render(request, "edit_video.html", data)
+
 def delete_genre(request, genre_id):
 	genre = Genre.objects.get(id=genre_id)
 	genre.delete()
@@ -186,3 +238,8 @@ def delete_movie(request, movie_id):
 	movie = Movie.objects.get(id=movie_id)
 	movie.delete()
 	return redirect("/movies")
+
+def delete_video(request, video_id):
+	video = Video.objects.get(id=video_id)
+	video.delete()
+	return redirect("/videos")

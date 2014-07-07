@@ -4,11 +4,11 @@
       {% include 'style.html' %}
     </head>
 
-    <h1>Edit movie {{ movie.name }}</h1>
+    <h1>Edit video {{ video.name }}</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Update movie">
+        <input type="submit" value="Update video">
     </form>
 
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "genres" %}">Genres</a></button>

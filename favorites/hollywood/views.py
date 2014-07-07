@@ -134,7 +134,6 @@ def view_actor(request, actor_id):
 
 def view_video(request, video_id):
 	video = Video.objects.get(id=video_id)
-	# trailer = Video.objects.filter()
 	data = {"video": video}
 	return render(request, "view_video.html", data)
 

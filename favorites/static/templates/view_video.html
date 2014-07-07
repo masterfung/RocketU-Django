@@ -5,9 +5,10 @@
       {% include 'style.html' %}
     </head>
 
-    <h1>{{ movie.name }}</h1>
-    <h2>{% video movie.video.video 'small' %}</h2>
-
+    <h1>{{ video.name }}</h1>
+    <div>
+        <h3>{% video video.video 'small' %}</h3>
+    </div>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "edit_video" video.id %}">Edit video</a></button>
     <button type="button" class="btn btn-primary- btn-lg"><a href="{% url "delete_video" video.id %}">Delete video</a></button>
 

@@ -83,8 +83,16 @@ def deal(request):
     }
     return render(request, 'deal.html', data)
 
-
 def blackjack(request):
+    """
+    ? is random number generator while :5 select the first five cards for the player.
+    """
+    data = {'cards': Card.objects.order_by('?')[:2]}
+
+    return render(request, 'blackjack.html', data)
+
+
+def poker(request):
     """
     ? is random number generator while :5 select the first five cards for the player.
     """

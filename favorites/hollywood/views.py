@@ -24,7 +24,7 @@ def actors(request):
 
 
 def videos(request):
-	video = Video.objects.all()
+	videos = Video.objects.all()
 	return render_to_response("videos.html", {'videos': videos})
 
 
@@ -134,6 +134,7 @@ def view_actor(request, actor_id):
 
 def view_video(request, video_id):
 	video = Video.objects.get(id=video_id)
+	# trailer = Video.objects.filter()
 	data = {"video": video}
 	return render(request, "view_video.html", data)
 

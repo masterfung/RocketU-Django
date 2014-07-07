@@ -14,7 +14,7 @@ class Video(models.Model):
 	video = EmbedVideoField()
 
 	def __unicode__(self):
-		return self.name
+		return self.video
 
 class Movie(models.Model):
 	name = models.CharField(max_length=100)

@@ -15,6 +15,7 @@ class Card(models.Model):
 	)
 	suit = models.PositiveSmallIntegerField(choices=SUITS)
 	rank = models.CharField(max_length=5)
+	image = models.ImageField(upload_to='card_images', blank=True, null=True)
 
 	def __unicode__(self):
 		return '{} of {}'.format(self.rank, self.suit)

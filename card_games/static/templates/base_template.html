@@ -5,6 +5,11 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock title %}</title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="{% static 'js/cards.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cards.css' %}">
+
 </head>
 <body>
 <div>
@@ -12,6 +17,7 @@
     <a href="{% url 'profile' %}">Profile</a> |  <a href="{% url 'faq' %}">FAQ</a>
     |  <a href="{% url 'deal' %}">Deal</a> |  <a href="{% url 'blackjack' %}">Blackjack</a>
     |  <a href="{% url 'poker' %}">Poker</a>
+    <img id="joker-right" width="40px" src="{% static "img/black_joker.jpg" %}">
 </div>
 <h1>Welcome to our Card Game!</h1>
 {% block content %}

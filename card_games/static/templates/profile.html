@@ -5,5 +5,8 @@ Profile
 {% endblock title %}
 
 {% block content %}
-    <p>Hi Player 1, you have 0 wins and 0 loses.</p>
+    <p>Hi {{ user.username }}, you have 0 wins and 0 loses.</p>
+    <p>Your email address is {{ user.email }}.</p>
+    <p>You last logged in {{ user.last_login }}.</p>
+    <p>You joined: {{ user.date_joined}}.</p>
 {% endblock content %}

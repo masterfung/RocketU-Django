@@ -27,6 +27,15 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+#Email
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'djangorockstar@gmail.com'
+EMAIL_HOST_PASSWORD = 'Djangorockstar#123'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'djangorockstar@gmail.com'
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -47,6 +56,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -79,6 +89,16 @@ USE_L10N = True
 
 USE_TZ = True
 
+#Password Hashers
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -92,6 +112,9 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, "static", *MEDIA_URL.strip("/").split("/
 TEMPLATE_DIRS = (
 	os.path.join(BASE_DIR, 'static', 'templates')
 )
+
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'login'
 
 try:
     from local_settings import *

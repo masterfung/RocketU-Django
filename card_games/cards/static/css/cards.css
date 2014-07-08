@@ -9,3 +9,17 @@ body {
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
 }
+
+.navbar {
+    padding:15px;
+    font-size: 20px;
+}
+
+#joker {
+    padding-right: 10px;
+}
+
+#joker-right {
+    padding-left: 10px;
+}
+

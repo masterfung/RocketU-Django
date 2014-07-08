@@ -12,13 +12,34 @@
 
 </head>
 <body>
-<div>
+<div class="navbar">
     <img id="joker" width="40px" src="{% static "img/red_joker.jpg" %}">
-    <a href="{% url 'profile' %}">Profile</a> |  <a href="{% url 'faq' %}">FAQ</a>
-    |  <a href="{% url 'deal' %}">Deal</a> |  <a href="{% url 'blackjack' %}">Blackjack</a>
+
+    {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">{{ user.username }}'s Profile</a>
+    {% else %}
+        <a href="{% url 'profile' %}">Profile</a>
+    {% endif %}
+    |  <a href="{% url 'faq' %}">FAQ</a>
+    |  <a href="{% url 'deal' %}">Deal</a>
+    |  <a href="{% url 'blackjack' %}">Blackjack</a>
     |  <a href="{% url 'poker' %}">Poker</a>
+
     <img id="joker-right" width="40px" src="{% static "img/black_joker.jpg" %}">
+
+    <span style="float:right;">
+        {% if user.is_authenticated %}
+                <button type="button" class="btn btn-default"><a href="{% url 'logout' %}">Logout</a></button>
+            {% if user.is_staff %}
+
+                <button type="button" class="btn btn-default"><a href="{% url 'admin:index' %}">{{ user.username }}'s Admin</a></button>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </span>
 </div>
+
 <h1>Welcome to our Card Game!</h1>
 {% block content %}
 

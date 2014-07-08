@@ -1,6 +1,9 @@
-<div>
-    {% for card in cards %}
-        <p>Suit: {{ card.get_suit_display }}, Rank: {{ card.rank | first}}</p>
-    {% endfor %}
-</div>
-        
+{% extends 'base_template.html' %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+    <h2>Welcome! We love games!</h2>
+{% endblock content %}

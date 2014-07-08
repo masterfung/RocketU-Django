@@ -5,7 +5,7 @@ Portfolio
 {% endblock title %}
 
 {% block content %}
-<h1>Portfolio</h1>
-<h2>Art</h2>
-<h2>Code</h2>
+    <h1>Portfolio</h1>
+    <a href="{% url 'art' %}"><h2>Art</h2></a>
+    <a href="{% url 'code' %}"><h2>Code</h2></a>
 {% endblock content %}

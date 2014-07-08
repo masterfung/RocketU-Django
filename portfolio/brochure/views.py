@@ -12,6 +12,17 @@ def portfolio(request):
 def contact(request):
 	return render_to_response('contact.html')
 
+def about(request):
+	return render_to_response('about.html')
+
+def entrepreneur(request):
+	return render_to_response('entrepreneur.html')
+
+def hacker(request):
+	return render_to_response('hacker.html')
+
+def artist(request):
+	return render_to_response('artist.html')
 
 def fizzbuzz(request, first, second):
 	fizzbuzz = []

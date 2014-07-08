@@ -12,13 +12,15 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'brochure.views.hello', name='home'),
-	url(r'^contact/$', 'brochure.views.contact', name='contact'),
+	url(r'^contact/$', 'brochure.views.new_contact', name='contact'),
 	# url(r"^scratchpad/(?P<first>\w+)/(?P<second>\w+)$", 'brochure.views.fizzbuzz'),
 	url(r"^portfolio/$", 'brochure.views.portfolio', name='portfolio'),
 	url(r"^about/$", 'brochure.views.about', name='about'),
 	url(r"^entrepreneur/$", 'brochure.views.entrepreneur', name='entrepreneur'),
 	url(r"^hacker/$", 'brochure.views.hacker', name='hacker'),
 	url(r"^artist/$", 'brochure.views.artist', name='artist'),
+	url(r"^art/$", 'brochure.views.art', name='art'),
+	url(r"^code/$", 'brochure.views.code', name='code'),
 )
 
 if settings.DEBUG:

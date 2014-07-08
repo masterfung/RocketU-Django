@@ -47,7 +47,7 @@ def new_contact(request):
 		# Django will check the form's validity for you
 		if form.is_valid():
 
-			# Saving the form will create a new Genre object
+			# Saving the form will create a new Contact object
 			if form.save():
 				# After saving, redirect the user back to the index page
 				return redirect("/")
@@ -57,6 +57,9 @@ def new_contact(request):
 		form = ContactForm()
 	data = {'form': form}
 	return render(request, "contact.html", data)
+
+def send_mail(request):
+	pass
 
 def fizzbuzz(request, first, second):
 	fizzbuzz = []

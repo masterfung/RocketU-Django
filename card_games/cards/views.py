@@ -3,7 +3,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from card_games import settings
 from cards.forms import EmailUserCreationForm
-from cards.models import Card
+from cards.models import Card, WarGame
 
 # Create your views here.
 
@@ -86,6 +86,7 @@ def deal(request):
     }
     return render(request, 'deal.html', data)
 
+@login_required
 def blackjack(request):
     """
     ? is random number generator while :5 select the first two cards for the player.
@@ -94,9 +95,6 @@ def blackjack(request):
     if data['cards'][0].rank == 'ace' or data['cards'][1].rank == 'ace':
         user = request.user
         user.email_user("You got an Ace!", "Lets Ace It UP!", settings.DEFAULT_FROM_EMAIL)
-    else:
-        user = request.user
-        user.email_user("#Failed Ace!", "You suck at this game!!", settings.DEFAULT_FROM_EMAIL)
 
     return render(request, 'blackjack.html', data)
 
@@ -143,4 +141,19 @@ def register(request):
 
     return render(request, "registration/register.html", {
         'form': form,
+    })
+
+@login_required
+def war(request):
+    cards = list(Card.objects.order_by('?'))
+    user_card = cards[0]
+    dealer_card = cards[1]
+
+    result = user_card.get_war_result(dealer_card)
+    WarGame.objects.create(result=result, player=request.user)
+
+    return render(request, 'war.html', {
+        'user_cards': [user_card],
+        'dealer_cards': [dealer_card],
+        'result': result
     })

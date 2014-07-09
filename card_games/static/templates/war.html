@@ -1,0 +1,12 @@
+{% extends 'base_template.html' %}
+{% load list_filters %}
+
+{% block title %}
+War
+{% endblock title %}
+
+{% block content %}
+    <h2>War Game!</h2>
+    <p>Here's your hand...</p>
+    {% include 'includes/hand.html' with cards=user_cards %}
+{% endblock content %}

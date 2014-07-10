@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
-
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -19,7 +19,9 @@ urlpatterns = patterns('',
 	url(r'^cards_filters/$', 'cards.views.cards_filters', name='cards_filters'),
 	url(r'^cards_filters/custom/$', 'cards.views.custom_filters', name='custom_filters'),
 	url(r'^tags/$', 'cards.views.tags', name='tags'),
+
 	url(r'^profile/$', 'cards.views.profile', name='profile'),
+
 	url(r'^faq/$', 'cards.views.faq', name='faq'),
 	url(r'^deal/$', 'cards.views.deal', name='deal'),
 	url(r'^blackjack/$', 'cards.views.blackjack', name='blackjack'),
@@ -27,9 +29,11 @@ urlpatterns = patterns('',
 	url(r'^hearts/$', 'cards.views.hearts', name='hearts'),
 	url(r'^no_faces/$', 'cards.views.no_faces', name='no_faces'),
 	url(r'^war/$', 'cards.views.war', name='war'),
+
 	url(r'^register/$', 'cards.views.register', name='register'),
 	url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
 	url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+
 	url(r'^password_reset/$', 'django.contrib.auth.views.password_reset', name='password_reset'),
 	url(r'^password_reset/done/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
 	# Support old style base36 password reset links; remove in Django 1.7

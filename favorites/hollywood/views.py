@@ -120,12 +120,10 @@ def view_genre(request, genre_id):
 	data = {"genre": genre}
 	return render(request, "view_genre.html", data)
 
-
 def view_movie(request, movie_id):
 	movie = Movie.objects.get(id=movie_id)
 	data = {"movie": movie}
 	return render(request, "view_movie.html", data)
-
 
 def view_actor(request, actor_id):
 	actor = Actor.objects.get(id=actor_id)

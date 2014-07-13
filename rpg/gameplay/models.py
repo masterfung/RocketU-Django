@@ -29,7 +29,7 @@ class Boss(models.Model):
 	difficulty = models.ForeignKey(Level, related_name='difficulty')
 
 	def __unicode__(self):
-		return u"{}".format(self.name)
+		return u"Name: {}, Region: {}".format(self.name, self.region)
 
 class Trainer(models.Model):
 	name = models.CharField(max_length=100)

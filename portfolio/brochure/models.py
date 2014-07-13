@@ -31,6 +31,5 @@ class Contact(models.Model):
 	email = models.EmailField()
 	comment = models.TextField()
 
-
 	def __unicode__(self):
-		return self.name
+		return "{} - {}".format(self.name, self.number)

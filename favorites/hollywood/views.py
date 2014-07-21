@@ -1,4 +1,5 @@
 from django.shortcuts import render, render_to_response, redirect, RequestContext
+from django.views.decorators.csrf import csrf_exempt
 from hollywood.models import Genre, Movie, Actor, Video
 from hollywood.forms import GenreForm, MovieForm, ActorForm, VideoForm
 

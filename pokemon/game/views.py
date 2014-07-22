@@ -1,12 +1,16 @@
 import json
 from django.core import serializers
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 
 # Create your views here.
+from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from game.models import Pokemon, Team
 
+
+def home(request):
+    return render_to_response('base.html', locals(), context_instance=RequestContext(request))
 
 @csrf_exempt
 def all_pokemon(request):
@@ -25,29 +29,34 @@ def all_pokemon(request):
         })
     return HttpResponse(
                 json.dumps(collection),
-                content_type='application.json'
+                content_type='application/json'
            )
 
 @csrf_exempt
 def new_pokemon(request):
     if request.method == 'POST':
         data = json.loads(request.body) #.loads is for json translation to python readable; .body is a django thing
-        pokemon = Pokemon.objects.create(
-            name=data['name'],
-            image=data['image'],
-            pokedex_id=data['pokedex_id'],
-            team=Team.objects.get(id=data['name'])
-        )
-        pokemon_info = {
-            'name': pokemon.name,
-            'image': pokemon.image,
-            'pokedex_id': pokemon.pokedex_id,
-            'team': {
-                'id': pokemon.team.id,
-                'type': pokemon.team.type
-            }
-        }
-        return HttpResponse(json.dumps(pokemon_info),
+        collection = []
+        for pokemon in data['members']:
+            new_pokemon = Pokemon.objects.create(
+                name=pokemon['name'],
+                image=pokemon['image'],
+                pokedex_id=pokemon['pokedex_id'],
+                team=Team.objects.get(id=data['team_info']['id'])
+            )
+            print new_pokemon
+            collection.append({  #if there are a lot of pokemon then you will need a for loop
+                'name': new_pokemon.name,
+                'image': new_pokemon.image,
+                'pokedex_id': new_pokemon.pokedex_id,
+                'id': new_pokemon.pk,
+                'team': {
+                    'id': new_pokemon.team.id,
+                    'name': new_pokemon.team.name
+                }
+            })
+
+        return HttpResponse(json.dumps({'response': collection}),
                    content_type='application/json')
 
 # from game.models import Team, Pokemon

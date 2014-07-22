@@ -4,11 +4,23 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+
+    <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="{% static 'js/index.js' %}"></script>
+{% block content %}
+<h1>Welcome to this world!</h1>
+    <button class="generate">Get Random Team</button>
+    <button class="save">Save Team</button>
+    <div class="pokemon">
+
+    </div>
+
+{% endblock content %}
+
+
 </body>
 </html>

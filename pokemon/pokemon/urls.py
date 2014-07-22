@@ -5,13 +5,13 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'pokemon.views.home', name='home'),
+    url(r'^$', 'game.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^all_pokemon/$', 'game.views.all_pokemon', name='all_pokemon'),
 
-
+	url(r'^new_pokemon/$', 'game.views.new_pokemon', name='new_pokemon'),
 
 )

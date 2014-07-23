@@ -47,10 +47,10 @@ $(document).ready(function() {
                             "<div>" +
                                 "<p>" + response.movies[i].title +"</p>" +
                                 "<p>" + response.movies[i].runtime +" mins</p>" +
-                                "<p class='hidden>" + response.movies[i].synopsis +" mins</p>" +
+                                "<p class='hidden'>MPAA Ratings: " + response.movies[i].mpaa_rating +"</p>" +
+                                "<img src="+response.movies[i].posters.original+">" +
                                 "<p> Year: " + response.movies[i].year +"</p>" +
-                                "<button class='learnMore'>Favorite</button>" +
-                                "<button class='favorite'>Favorite</button>" +
+                                "<button class='learnMore'>Learn More</button>" +
                                 "<button class='favorite'>Favorite</button>" +
                             "</div>"
                         )
@@ -63,21 +63,9 @@ $(document).ready(function() {
         })
 });
 
-    $(document).on('click', '.learn', function () {
-        $.ajax({
-            url: 'http://api.rottentomatoes.com/api/public/v1.0/movies/'+ movieID + '/similar.json?apikey=' + myApiKey +'&limit=5',
-                type: 'GET',
-                dataType: 'jsonp',
-                success: function (response) {
-                    console.log(response);
-//                    $('.learnMore').on('click', function () {
-//                        $(this).toggle();
-//                    })
-                },
-                error: function (response) {
-                    console.log(response);
-                }
-            })
+    $(document).on('click', '.learnMore', function () {
+        $('.hidden').toggle();
+
         })
     });
 

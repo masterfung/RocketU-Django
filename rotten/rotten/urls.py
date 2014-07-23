@@ -15,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^new_movie_html/$', 'tomatoes.views.new_movie_html', name='new_movie_html'),
     url(r'^favorites/$', 'tomatoes.views.all_favorites', name='all_favorites'),
     url(r'^tinder/$', 'tomatoes.views.tinder', name='tinder'),
+    url(r'^new_favorite/$', 'tomatoes.views.new_favorite', name='new_favorite'),
 )

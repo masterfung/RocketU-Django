@@ -1,0 +1,32 @@
+
+<div class="movieInfo">
+{#    {% for i in movie_response %}#}
+        <img src="{{ poster }}" />
+        <p>
+            Title: {{ title }}
+        </p>
+{#        <p  class="hidden">#}
+{#            Synopsis: {{ critics_score }}#}
+{#        </p>#}
+        <p>
+            Released In: {{ release_year }}
+        </p>
+
+        <p>
+            Critic Score: {{ critics_score }}
+        </p>
+        <p class="hidden">
+            MPAA Rating: {{ mpaa_rating }}
+        </p>
+        <p class="hidden">
+            Runtime: {{ runtime }}
+        </p>
+
+        <p class="favorite">
+            <button data-id="">
+                Favorite
+            </button>
+        </p>
+
+{#    {% endfor %}#}
+</div>

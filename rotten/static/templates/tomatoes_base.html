@@ -18,16 +18,21 @@
 {#    Get a Movie#}
 {#    </button>#}
     <br/>
-    <button class="saveMovie">
-    Save this Movie JSON
-    </button>
-
-    <button class="saveMovieHtml">
-    Save this Movie HTML
-    </button>
+{#    <button class="saveMovie">#}
+{#    Save this Movie JSON#}
+{#    </button>#}
+{##}
+{#    <button class="saveMovieHtml">#}
+{#    Save this Movie HTML#}
+{#    </button>#}
 
     <div class="movieInfoContainer">
+    <h1>Welcome to Ripe Tomater</h1>
+    <p>Start by Searching</p>
+    </div>
 
+    <div class="selection">
+    {% include 'movie_template.html' %}
     </div>
 
 {% endblock content %}

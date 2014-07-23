@@ -11,8 +11,9 @@ def home(request):
     return render(request, 'tomatoes_base.html')
 
 def all_favorites(request):
-    all_movies = Movie.objects.all()
-    return render_to_response('movie_template.html', all_movies)
+    if request == 'GET':
+        all_movies = Movie.objects.all()
+        return render_to_response('movie_template.html', all_movies)
 
 @csrf_exempt
 def new_movie_json(request):
@@ -64,3 +65,7 @@ def new_movie_html(request):
             'audience_score': new_movie.audience_score,
         }
         return render_to_response('movie_template.html', movie_info)
+
+
+def tinder(request):
+    return render(request, 'tinder.html')

@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static "css/tinder.css" %}"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static "js/tinder.js" %}"></script>
+</head>
+<body>
+    <h1>Welcome to Tinder Review for Movies</h1>
+    <h3>What is your favorite movie?</h3>
+    <input type="text" id="favoriteMovie"/>
+    <button class="searchTinder">Search</button>
+    <div id="recommended">
+
+    </div>
+</body>
+</html>

@@ -5,7 +5,7 @@ $(document).ready(function() {
     var movieInfo = {};
 
     $(document).on('click', '#searchBtn', function() {
-        var reference = [];
+
         searchQuery = $('#search').val();
         console.log(searchQuery);
 //        $('.getMovie').on('click', function() {
@@ -39,8 +39,8 @@ $(document).ready(function() {
                         "</p><button class='favorite' data-id="+i+">Favorite This Movie</button></p><button class='moreInfoBtn'>More Information</button>" +
                         "<div class='moreInfo' style='display:none;'><p class='mpaaRating'>MPAA Rating: "+movieInfo.mpaa_rating+
                         "</p><p class='runtime'>Runtime: "+movieInfo.runtime+"</p></div></div>"
-                )
-                console.log(reference);
+                );
+                console.log(movieList);
             }
             $('.favorite').on('click', function () {
                 var referencial = $(this).data('id');
@@ -64,7 +64,7 @@ $(document).ready(function() {
             $('.moreInfoBtn').on('click', function () {
                     console.log('More Information Coming');
                     $(this).text(function (i, text) {
-                        return text === "More Information" ? "Less Information" : "More Information";
+                        return text === "More Info" ? "Less Info]" : "More Info"; //Change the BTN info upon click
                     });
                     $(this).siblings('.moreInfo').toggle()
                 });
@@ -77,22 +77,22 @@ $(document).ready(function() {
     });
 
 
-
-    $('.saveMovie').on('click', function() {
-    movieInfo = JSON.stringify(movieInfo);
-    $.ajax({
-        url: '/new_movie_json/',
-        type: 'POST',
-        dataType: 'json',
-        data: movieInfo,
-        success: function(movie_response) {
-            console.log(movie_response);
-        },
-        error: function(error_response) {
-            console.log(error_response);
-        }
-    });
-});
+//
+//    $('.saveMovie').on('click', function() {
+//    movieInfo = JSON.stringify(movieInfo);
+//    $.ajax({
+//        url: '/new_movie_json/',
+//        type: 'POST',
+//        dataType: 'json',
+//        data: movieInfo,
+//        success: function(movie_response) {
+//            console.log(movie_response);
+//        },
+//        error: function(error_response) {
+//            console.log(error_response);
+//        }
+//    });
+//});
 
 //    movieInfo = JSON.stringify(movieInfo);
 //    $.ajax({
@@ -108,22 +108,22 @@ $(document).ready(function() {
 //        }
 //    });
 
-    $('.saveMovieHtml').on('click', function() {
-    movieInfo = JSON.stringify(movieInfo);
-    $.ajax({
-        url: '/new_movie_html/',
-        type: 'POST',
-        dataType: 'html',
-        data: movieInfo,
-        success: function(movie_response) {
-            console.log(movie_response);
-            $('.movieInfoContainer').html(movie_response);
-        },
-        error: function(error_response) {
-            console.log(error_response);
-        }
-    });
-});
+//    $('.saveMovieHtml').on('click', function() {
+//    movieInfo = JSON.stringify(movieInfo);
+//    $.ajax({
+//        url: '/new_movie_html/',
+//        type: 'POST',
+//        dataType: 'html',
+//        data: movieInfo,
+//        success: function(movie_response) {
+//            console.log(movie_response);
+//            $('.movieInfoContainer').html(movie_response);
+//        },
+//        error: function(error_response) {
+//            console.log(error_response);
+//        }
+//    });
+//});
 
 
 

@@ -22,11 +22,11 @@
             Runtime: {{ runtime }}
         </p>
 
-        <p class="favorite">
-            <button data-id="">
-                Favorite
-            </button>
-        </p>
+        {% for favorite in movie_info %}
+            <p class="userFavorites">
+
+            </p>
+        {% endfor %}
 
 {#    {% endfor %}#}
 </div>

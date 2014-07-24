@@ -8,39 +8,41 @@ from tomatoes.models import Movie
 
 
 def home(request):
-    return render(request, 'tomatoes_base.html')
+    favorites = Movie.objects.all()
+    data = {'favorites': favorites}
+    return render(request, 'tomatoes_base.html', data)
 
-def all_favorites(request):
-    if request == 'GET':
-        all_movies = Movie.objects.all()
-        return render_to_response('movie_template.html', all_movies)
-
-@csrf_exempt
-def new_movie_json(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        collection = []
-
-        new_movie = Movie.objects.create(
-            title=data['title'],
-            release_year=data['release_year'],
-            critics_score=data['critics_score'],
-            poster=data['poster'],
-            mpaa_rating=data['mpaa_rating'],
-            runtime=data['runtime'],
-            audience_score=data['audience_score'],
-        )
-        print new_movie
-        collection.append({
-            'title': new_movie.title,
-            'release_year': new_movie.release_year,
-            'critics_score': new_movie.critics_score,
-            'poster': new_movie.poster,
-            'mpaa_rating': new_movie.mpaa_rating,
-            'runtime': new_movie.runtime,
-            'audience_score': new_movie.audience_score,
-        })
-        return HttpResponse(json.dumps({'response': collection}), content_type='application/json')
+def tinder(request):
+    favorites = Movie.objects.all()
+    source = {'favorites': favorites}
+    return render(request, 'tinder.html', source)
+#
+# @csrf_exempt
+# def new_movie_json(request):
+#     if request.method == 'POST':
+#         data = json.loads(request.body)
+#         collection = []
+#
+#         new_movie = Movie.objects.create(
+#             title=data['title'],
+#             release_year=data['release_year'],
+#             critics_score=data['critics_score'],
+#             poster=data['poster'],
+#             mpaa_rating=data['mpaa_rating'],
+#             runtime=data['runtime'],
+#             audience_score=data['audience_score'],
+#         )
+#         print new_movie
+#         collection.append({
+#             'title': new_movie.title,
+#             'release_year': new_movie.release_year,
+#             'critics_score': new_movie.critics_score,
+#             'poster': new_movie.poster,
+#             'mpaa_rating': new_movie.mpaa_rating,
+#             'runtime': new_movie.runtime,
+#             'audience_score': new_movie.audience_score,
+#         })
+#         return HttpResponse(json.dumps({'response': collection}), content_type='application/json')
 
 @csrf_exempt
 def new_movie_html(request):
@@ -67,29 +69,26 @@ def new_movie_html(request):
         return render_to_response('movie_template.html', movie_info)
 
 
-def tinder(request):
-    return render(request, 'tinder.html')
-
-# @csrf_exempt
-# def new_tinder(request):
-#     if request.method == 'POST':
-#         data = json.loads(request.body)
-#         new_movie = Movie.objects.create(
-#             title=data['title'],
-#             release_year=data['release_year'],
-#             critics_score=data['critics_score'],
-#             poster=data['poster'],
-#             mpaa_rating=data['mpaa_rating'],
-#             runtime=data['runtime'],
-#             audience_score=data['audience_score'],
-#         )
-#         movie_info = {
-#             'title': new_movie.title,
-#             'release_year': new_movie.release_year,
-#             'critics_score': new_movie.critics_score,
-#             'poster': new_movie.poster,
-#             'mpaa_rating': new_movie.mpaa_rating,
-#             'runtime': new_movie.runtime,
-#             'audience_score': new_movie.audience_score,
-#         }
-#         return render_to_response('movie_template.html', movie_info)
+@csrf_exempt
+def new_tinder_html(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        new_movie = Movie.objects.create(
+            title=data['title'],
+            release_year=data['release_year'],
+            critics_score=data['critics_score'],
+            poster=data['poster'],
+            mpaa_rating=data['mpaa_rating'],
+            runtime=data['runtime'],
+            audience_score=data['audience_score'],
+        )
+        movie_info = {
+            'title': new_movie.title,
+            'release_year': new_movie.release_year,
+            'critics_score': new_movie.critics_score,
+            'poster': new_movie.poster,
+            'mpaa_rating': new_movie.mpaa_rating,
+            'runtime': new_movie.runtime,
+            'audience_score': new_movie.audience_score,
+        }
+        return render_to_response('tinder.html', movie_info)

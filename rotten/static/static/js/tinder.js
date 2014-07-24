@@ -16,7 +16,7 @@ $(document).ready(function() {
 //    }
     var myApiKey = 'y2fb7ajxwdkc8h8y22ur7eer';
     var movieID;
-
+    var movieInfo = {};
 
 
     $('.searchTinder').on('click', function() {
@@ -42,7 +42,21 @@ $(document).ready(function() {
                 dataType: 'jsonp',
                 success: function (response) {
                     console.log(response);
-                    for (var i = 0; i < response.movies.length; i++) {
+                    var movies = response.movies;
+                    movieList = [];
+                    for (i = 0; i < movies.length; i++) {
+                        movieInfo = {};
+                        movie = movies[i];
+                        movieInfo.title = movie.title;
+                        movieInfo.release_year = movie.year;
+                        movieInfo.critics_score = movie.ratings.critics_score;
+                        movieInfo.poster = movie.posters.original;
+                        movieInfo.mpaa_rating = movie.mpaa_rating;
+                        movieInfo.runtime = movie.runtime;
+                        movieInfo.audience_score = movie.ratings.audience_score;
+                        movieList.push(movieInfo);
+
+
                         $('#recommended').append(
                             "<div>" +
                                 "<p>" + response.movies[i].title +"</p>" +
@@ -50,16 +64,19 @@ $(document).ready(function() {
                                 "<p class='hidden'>MPAA Ratings: " + response.movies[i].mpaa_rating +"</p>" +
                                 "<img src="+response.movies[i].posters.original+">" +
                                 "<p> Year: " + response.movies[i].year +"</p>" +
+
                                 "<button class='learnMore'>Learn More</button>" +
-                                "<button class='favorite'>Favorite</button>" +
+                                "</p><button class='favorite' data-id="+i+">Favorite This Movie</button></p>" +
                             "</div>"
                         )
+
                     }
+
                 },
-                error: function (response) {
+                error: function(response) {
                     console.log(response);
                 }
-            })
+
         })
 });
 
@@ -69,3 +86,22 @@ $(document).ready(function() {
         })
     });
 
+    $(document).on('click', '.favorite', function () {
+        var referencial = $(this).data('id');
+        var movieInfo = movieList[referencial];
+        $(this).html("<img src='http://newsupermariobros2.nintendo.com/mobile/_ui/img/power-ups/carousel/super-star.png' width=50>");
+        movieInfo = JSON.stringify(movieInfo);
+        $.ajax({
+            url: '/new_tinder_html/',
+            type: 'POST',
+            dataType: 'html',
+            data: movieInfo,
+            success: function(movie_response) {
+                console.log(movie_response);
+            },
+            error: function(error_response) {
+                console.log(error_response);
+            }
+        });
+    });
+    })

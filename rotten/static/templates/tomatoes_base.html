@@ -4,7 +4,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock title %}</title>
+    <title>{% block title %}Tomater{% endblock title %}</title>
     <link rel="stylesheet" href="{% static "css/custom.css" %}"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{% static "js/custom.js" %}"></script>
@@ -12,6 +12,9 @@
 <body>
 
 {% block content %}
+    <a href="{% url 'home' %}">Search</a> |
+    <a href="{% url 'tinder' %}">Similar Search</a>
+    <br/>
     <input type="text" id="search"/>
     <button id="searchBtn">Submit</button>
 {#    <button class="getMovie">#}
@@ -28,7 +31,7 @@
 
     <div class="movieInfoContainer">
     <h1>Welcome to Ripe Tomater</h1>
-    <p>Start by Searching</p>
+    <p>Start by <Search></Search>ing</p>
     </div>
 
     <div class="selection">

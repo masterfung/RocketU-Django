@@ -33,7 +33,7 @@ $(document).ready(function() {
         });
 
         $("#getUserBtn").on('click', function () {
-            searchParameter = 26820281;
+            searchParameter = 'users/26820281';
         });
 
         $("#getShopListings").on('click', function () {

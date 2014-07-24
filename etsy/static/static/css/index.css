@@ -6,41 +6,10 @@ body {
     font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 
-.movieInfoContainer {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-}
 
 input {
     width: 550px;
     height: 25px;
     font-size: 15px;
     border-radius: 10px;
-}
-
-div {
-    padding-top: 20px;
-    width: 300px;
-    height: 450px;
-    float: left;
-    border: 1px solid cyan;
-}
-
-.moreInfo, .selection, .movieInfo {
-    border: none;
-}
-
-
-button {
-    padding: 10px 5px;
-    border-radius: 10px;
-    border: 1px black solid;
-    background-color: white;
-    text-shadow: none;
-    margin-bottom: 10px;
-}
-
-.hidden {
-    display: none;
 }

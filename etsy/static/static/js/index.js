@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var myApiKey = 'x24jerdzi236twww6lbcn5k5';
-    var shopperID = 'TriforceInk';
+    var searchParameter;
 
     $.ajax({
         url: 'https://openapi.etsy.com/v2/listings/active.js?api_key=' + myApiKey,
@@ -27,16 +27,34 @@ $(document).ready(function() {
             console.log(response);
         }
     }).complete(function () {
-        $.ajax({
-            url: 'https://openapi.etsy.com/v2/stores/active.js?api_key=' + myApiKey,
-        type: "GET",
-        dataType: 'jsonp',
-        success: function(response) {
-            console.log(response);
-        },
-        error: function (response){
-            console.log(response);
-        }
+
+        $("#getShopBtn").on('click', function () {
+            searchParameter = 'shops/TriforceInk';
+        });
+
+        $("#getUserBtn").on('click', function () {
+            searchParameter = 26820281;
+        });
+
+        $("#getShopListings").on('click', function () {
+            searchParameter = 'shops/TriforceInk/listings/active'
+        });
+
+        $("#searchBtn").on('click', function () {
+            $.ajax({
+            url: 'https://openapi.etsy.com/v2/'+ searchParameter +'.js?api_key=' + myApiKey,
+            type: "GET",
+            dataType: 'jsonp',
+            success: function(response) {
+                console.log(response.results[0]);
+                $('.second').append(
+                    "<div>"+ response + "</div>"
+                )
+            },
+            error: function (response){
+                console.log(response);
+            }
+            })
         })
     })
 

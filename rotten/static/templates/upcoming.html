@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Upcoming</title>
+    <link rel="stylesheet" href="{% static "css/tinder.css" %}"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static "js/upcoming.js" %}"></script>
+</head>
+<body>
+    <a href="{% url 'home' %}">Search</a> |
+    <a href="{% url 'tinder' %}">Similar Search</a> |
+    <a href="{% url 'upcoming' %}">What's Happening in Movies</a>
+
+<h1>What is Happening in Movies</h1>
+
+<button id="playingNow">Playing Now</button>
+<button id="comingSoon">Coming Soon</button>
+<button id="myWatchlist">My Watchlist</button>
+
+<div class="upcoming">
+
+</div>
+</body>
+</html>

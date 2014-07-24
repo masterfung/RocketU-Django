@@ -16,6 +16,9 @@ def tinder(request):
     # favorites = Movie.objects.all()
     # source = {'favorites': favorites}
     return render(request, 'tinder.html')
+
+def upcoming(request):
+    return render(request, 'upcoming.html')
 #
 # @csrf_exempt
 # def new_movie_json(request):

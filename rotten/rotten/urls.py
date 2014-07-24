@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     # url(r'^favorites/$', 'tomatoes.views.all_favorites', name='all_favorites'),
     url(r'^tinder/$', 'tomatoes.views.tinder', name='tinder'),
     url(r'^new_tinder_html/$', 'tomatoes.views.new_tinder_html', name='new_tinder_html'),
+    url(r'^all_favorites/$', 'tomatoes.views.all_favorites', name='all_favorites'),
 )

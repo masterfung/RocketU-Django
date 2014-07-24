@@ -13,9 +13,9 @@ def home(request):
     return render(request, 'tomatoes_base.html', data)
 
 def tinder(request):
-    favorites = Movie.objects.all()
-    source = {'favorites': favorites}
-    return render(request, 'tinder.html', source)
+    # favorites = Movie.objects.all()
+    # source = {'favorites': favorites}
+    return render(request, 'tinder.html')
 #
 # @csrf_exempt
 # def new_movie_json(request):
@@ -92,3 +92,20 @@ def new_tinder_html(request):
             'audience_score': new_movie.audience_score,
         }
         return render_to_response('tinder.html', movie_info)
+
+@csrf_exempt
+def all_favorites(request):
+    movies = Movie.objects.all()
+
+    favorites_array = []
+    for favorite in movies:
+        favorites_array.append({
+            'title': favorite.title,
+            'release_year': favorite.release_year,
+            'critics_score': favorite.critics_score,
+            'poster': favorite.poster,
+            'mpaa_rating': favorite.mpaa_rating,
+            'runtime': favorite.runtime,
+            'audience_score': favorite.audience_score,
+        })
+    return HttpResponse(json.dumps(favorites_array), content_type='application/json')

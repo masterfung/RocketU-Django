@@ -104,4 +104,29 @@ $(document).ready(function() {
             }
         });
     });
-    })
+    $('#getAllFavorites').on('click', function() {
+        $.ajax({
+            url: '/all_favorites/',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                console.log(response[0].audience_score);
+                for (var j = 0; j < response.length; j++) {
+                    $(".favorites").append(
+                            "<div>Title: "+ response[j].title +"</div>" +
+                            "<div>Year: "+ response[j].release_year +"</div>" +
+                            "<div>Critics Score: "+ response[j].critics_score +"</div>" +
+                            "<div>Poster: <img src="+ response[j].poster +"></div>" +
+                            "<div>MPAA Rating: "+ response[j].mpaa_rating +"</div>" +
+                            "<div>Audience Score: "+ response[j].audience_score +"</div>" +
+                            "<hr>"
+                    )
+                }
+            },
+            error: function(response) {
+                console.log(response);
+            }
+        });
+    });
+    });

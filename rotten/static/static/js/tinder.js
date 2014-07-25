@@ -114,7 +114,7 @@ $(document).ready(function() {
                 console.log(response[0].audience_score);
                 for (var j = 0; j < response.length; j++) {
                     $(".favorites").append(
-                            "<div>Title: "+ response[j].title +"</div>" +
+                            "<div class='ui-accordion-header'>Title: "+ response[j].title +"</div>" +
                             "<div>Year: "+ response[j].release_year +"</div>" +
                             "<div>Critics Score: "+ response[j].critics_score +"</div>" +
                             "<div>Poster: <img src="+ response[j].poster +"></div>" +

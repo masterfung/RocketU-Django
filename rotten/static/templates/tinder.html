@@ -6,6 +6,7 @@
     <title>Tindy</title>
     <link rel="stylesheet" href="{% static "css/tinder.css" %}"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static "js/jquery-ui-1.11.0/jquery-ui.js" %}"></script>
     <script src="{% static "js/tinder.js" %}"></script>
 </head>
 <body>
@@ -24,7 +25,7 @@
     <button id="getAllFavorites">Get All Favorites</button>
 
     <ul>
-    <div class="favorites">
+    <div class="favorites" id="accordion">
     <h2>Your Favorites</h2>
     </div>
     </ul>

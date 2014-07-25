@@ -68,7 +68,7 @@
       <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/static/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32681563" vertical-offset="676" max-vertical-offset="1716">
+            <state vertical-scroll-proportion="1.2709497" vertical-offset="0" max-vertical-offset="1716">
               <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
               <folding />
             </state>
@@ -115,8 +115,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="8" />
-    <option name="y" value="23" />
+    <option name="y" value="22" />
     <option name="width" value="1916" />
     <option name="height" value="1178" />
   </component>
@@ -523,7 +522,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="8" y="23" width="1916" height="1178" extended-state="7" />
+    <frame x="0" y="22" width="1916" height="1178" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -618,7 +617,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/static/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32681563" vertical-offset="676" max-vertical-offset="1716">
+        <state vertical-scroll-proportion="1.2709497" vertical-offset="0" max-vertical-offset="1716">
           <caret line="35" column="37" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
           <folding />
         </state>

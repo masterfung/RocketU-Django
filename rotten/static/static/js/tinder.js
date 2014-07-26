@@ -36,6 +36,7 @@ $(document).ready(function() {
             console.log(response);
         }
     }).complete(function () {
+            $('.accordion').accordion({active: 1});
             $.ajax({
                 url: 'http://api.rottentomatoes.com/api/public/v1.0/movies/'+ movieID + '/similar.json?apikey=' + myApiKey +'&limit=5',
                 type: 'GET',
@@ -58,12 +59,12 @@ $(document).ready(function() {
 
 
                         $('#recommended').append(
-                            "<div>" +
-                                "<p>" + response.movies[i].title +"</p>" +
-                                "<p>" + response.movies[i].runtime +" mins</p>" +
-                                "<p class='hidden'>MPAA Ratings: " + response.movies[i].mpaa_rating +"</p>" +
+                            "<div id='accordion'>" +
+                                "<h3>" + response.movies[i].title +"</h3>" +
+                                "<div>" + response.movies[i].runtime +" mins</div>" +
+                                "<div class='hidden'>MPAA Ratings: " + response.movies[i].mpaa_rating +"</div>" +
                                 "<img src="+response.movies[i].posters.original+">" +
-                                "<p> Year: " + response.movies[i].year +"</p>" +
+                                "<div> Year: " + response.movies[i].year +"</div>" +
 
                                 "<button class='learnMore'>Learn More</button>" +
                                 "</p><button class='favorite' data-id="+i+">Favorite This Movie</button></p>" +
@@ -114,12 +115,14 @@ $(document).ready(function() {
                 console.log(response[0].audience_score);
                 for (var j = 0; j < response.length; j++) {
                     $(".favorites").append(
-                            "<div class='ui-accordion-header'>Title: "+ response[j].title +"</div>" +
-                            "<div>Year: "+ response[j].release_year +"</div>" +
-                            "<div>Critics Score: "+ response[j].critics_score +"</div>" +
-                            "<div>Poster: <img src="+ response[j].poster +"></div>" +
-                            "<div>MPAA Rating: "+ response[j].mpaa_rating +"</div>" +
-                            "<div>Audience Score: "+ response[j].audience_score +"</div>" +
+                            "<div>"+
+                                "<h3 class='ui-accordion-header'>Title: "+ response[j].title +"</h3>" +
+                                "<div>Year: "+ response[j].release_year +"</div>" +
+                                "<div>Critics Score: "+ response[j].critics_score +"</div>" +
+                                "<div>Poster: <img src="+ response[j].poster +"></div>" +
+                                "<div>MPAA Rating: "+ response[j].mpaa_rating +"</div>" +
+                                "<div>Audience Score: "+ response[j].audience_score +"</div>" +
+                            "</div>" +
                             "<hr>"
                     )
                 }
@@ -129,4 +132,7 @@ $(document).ready(function() {
             }
         });
     });
+
+
+
     });

@@ -3,7 +3,10 @@
  */
 
 $(document).ready(function () {
-    $('#startgame').on('click', function () {
+	var gameSpeed;
+
+    function gamePlay() {
+
 	    // Let's set up some variables to save the canvas elements and properties
 	    var canvas = $("#canvas")[0];
 	    var canvasContext = canvas.getContext("2d");
@@ -20,6 +23,8 @@ $(document).ready(function () {
 		var score;
 
 	    var scoreChart = [];
+
+	    var largestScore;
 
 		function gameLoop() {
 			var nextPosition = getNextPosition();
@@ -89,12 +94,29 @@ $(document).ready(function () {
 	    // Check if snake is on the same space as food
 	    function checkEatFood(position) {
 		    if (position.x == food.x && position.y == food.y) {  // The snake is eating the food
-	        // Create a new piece of food, which removes this current one
-	        createFood();
-			// If we ate a piece of food, increase our score
-	        score++;
-	        return true;
-		    } else {
+		        // Create a new piece of food, which removes this current one
+		        createFood();
+
+				// If we ate a piece of food, increase our score
+		        score++;
+		        return true;
+		    } else if (position.x == food_2.x && position.y == food_2.y) {
+
+		        // Create a new piece of food, which removes this current one
+		        createSecondFood();
+
+				// If we ate a piece of food, increase our score
+		        score++;
+		        return true;
+			} else if (position.x == special_food.x && position.y == special_food.y) {
+
+		        // Create a new piece of food, which removes this current one
+		        createSpecialFood();
+
+				// If we ate a piece of food, increase our score
+		        score+=2;
+		        return true;
+			} else {
 		        return false;
 		    }
 
@@ -110,20 +132,30 @@ $(document).ready(function () {
 			// Paint the snake body
 		    for (var i = 0; i < snakeBody.length; i++) {
 		        var cell = snakeBody[i];
-		        paintCell(cell.x, cell.y);
+
+			    if (i == 0) {
+				    paintCell(cell.x, cell.y, 'red');
+			    } else {
+				    paintCell(cell.x, cell.y, 'purple');
+			    }
+
 	        }
 
 			// Paint the food
 	        paintFood(food.x, food.y);
-	
+	        paintFood(food_2.x, food_2.y);
+			paintSpecialFood(special_food.x, special_food.y);
+
 			// Paint the score text
 		    var scoreText = "Score: " + score;
+		    var highScore = "High Score: " + largestScore;
 		    canvasContext.fillText(scoreText, 5, height - 5);
+		    canvasContext.fillText(highScore, 5, height - 15);
 	    }
 
 		//Lets first create a generic function to paint cells
-		function paintCell(x, y) {
-		    canvasContext.fillStyle = "purple";
+		function paintCell(x, y, color) {
+		    canvasContext.fillStyle = color;
 		    canvasContext.fillRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
 		    canvasContext.strokeStyle = "white";
 		    canvasContext.strokeRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
@@ -136,18 +168,43 @@ $(document).ready(function () {
 		    canvasContext.strokeRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
 		}
 
+	    function paintSpecialFood(x, y) {
+		    canvasContext.fillStyle = "green";
+		    canvasContext.fillRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
+		    canvasContext.strokeStyle = "white";
+		    canvasContext.strokeRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
+		}
+
 		var gameLoopInterval;
 
 		var food;
 
+	    var food_2;
+
+	    var special_food;
+
 	    // Create a random piece of food
 	    function createFood() {
-
 	        food = {
 	            x: Math.round(Math.random() * (width - cellWidth) / cellWidth),
 	            y: Math.round(Math.random() * (height - cellWidth) / cellWidth)
 	        };
 
+
+	    }
+
+	    function createSecondFood() {
+		    food_2 = {
+	            x: Math.round(Math.random() * (width - cellWidth) / cellWidth),
+	            y: Math.round(Math.random() * (height - cellWidth) / cellWidth)
+	        };
+	    }
+
+	    function createSpecialFood() {
+		    special_food = {
+	            x: Math.round(Math.random() * (width - cellWidth) / cellWidth),
+	            y: Math.round(Math.random() * (height - cellWidth) / cellWidth)
+	        };
 	    }
 
 	    function startGame() {
@@ -155,9 +212,11 @@ $(document).ready(function () {
 	        createSnake();
 		    // Create the initial food
 	        createFood();
+		    createSecondFood();
+		    createSpecialFood();
 
 	        // Let's set the game loop to run every 60 milliseconds
-	        gameLoopInterval = setInterval(gameLoop, 60);
+	        gameLoopInterval = setInterval(gameLoop, gameSpeed);
 
 		    // Default the snake going right
 	        currentDirection = "right";
@@ -167,16 +226,16 @@ $(document).ready(function () {
 	    }
 
 		function createSnake() {
-	    // Starting length of the snake will be 5 cells
-	    var length = 5;
+		    // Starting length of the snake will be 5 cells
+		    var length = 5;
 
-	    // Let's set the snake body back to an empty array
-	    snakeBody = [];
+		    // Let's set the snake body back to an empty array
+		    snakeBody = [];
 
-	    // Add cells to the snake body starting from the top left hand corner of the screen
-	    for (var i = length - 1; i >= 0; i--) {
-	        snakeBody.push({x: i, y: 0});
-	    }
+		    // Add cells to the snake body starting from the top left hand corner of the screen
+		    for (var i = length - 1; i >= 0; i--) {
+		        snakeBody.push({x: i, y: 0});
+		    }
 		}
 
 		// Let's set up the arrow keys for our game
@@ -194,7 +253,7 @@ $(document).ready(function () {
 		function gameOver() {
 		    clearInterval(gameLoopInterval);
 			scoreChart.push(score);
-//			$('.score').append("<p>" + scoreChart + "</p>");
+			largestScore = Math.max.apply(Math, scoreChart);
 			console.log(scoreChart);
 			alert('Game Over!');
 			userInput = confirm('Do you want to play again?');
@@ -207,7 +266,22 @@ $(document).ready(function () {
 
 		startGame();
 
-    })
+    }
+
+	$('#normal').on('click', function () {
+		gameSpeed = 60;
+		gamePlay()
+	});
+
+	$('#harder').on('click', function () {
+		gameSpeed = 30;
+		gamePlay()
+	});
+
+	$('#hardest').on('click', function () {
+		gameSpeed = 15;
+		gamePlay()
+	});
 
 });
 

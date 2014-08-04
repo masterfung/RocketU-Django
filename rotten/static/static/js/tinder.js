@@ -91,7 +91,7 @@ $(document).ready(function() {
         var referencial = $(this).data('id');
         var movieInfo = movieList[referencial];
         $(this).html("<img src='http://newsupermariobros2.nintendo.com/mobile/_ui/img/power-ups/carousel/super-star.png' width=50>");
-        movieInfo = JSON.stringify(movieInfo);
+//        movieInfo = JSON.stringify(movieInfo);
         $.ajax({
             url: '/new_tinder_html/',
             type: 'POST',

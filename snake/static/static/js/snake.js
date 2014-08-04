@@ -34,13 +34,6 @@ $(document).ready(function () {
 		        return;
 		    }
 
-		    // Remove the tail of the snake
-		    snakeBody.pop();
-
-		    // Add the next position
-		    // to the front of our snakeBody
-		    snakeBody.unshift(nextPosition);
-
 			var ateFood = checkEatFood(nextPosition);
 			if(!ateFood) {
 	            // Remove the tail of the snake, only if we didn't eat food this time around
@@ -133,7 +126,7 @@ $(document).ready(function () {
 		    for (var i = 0; i < snakeBody.length; i++) {
 		        var cell = snakeBody[i];
 
-			    if (i == 0) {
+			    if (i === 0) {
 				    paintCell(cell.x, cell.y, 'red');
 			    } else {
 				    paintCell(cell.x, cell.y, 'purple');
@@ -259,8 +252,6 @@ $(document).ready(function () {
 			userInput = confirm('Do you want to play again?');
 			if (userInput == true) {
 				startGame();
-			} else {
-				alert('Come back again.');
 			}
 		}
 

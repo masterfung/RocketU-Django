@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf.global_settings import AUTH_USER_MODEL
 
 SITE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = (
 	'django.contrib.staticfiles',
 	'south',
 	'game',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,11 +87,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
+
+
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/'
 
 TEMPLATE_DIRS = (
 	os.path.join(SITE_ROOT, "templates"),
@@ -100,7 +106,6 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
-
 
 try:
 	from local_settings import *

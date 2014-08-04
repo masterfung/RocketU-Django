@@ -7,19 +7,22 @@
 	<title>{% block title %}{% endblock title %}</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="{% static "js/snake.js" %}" type="text/javascript"></script>
+	<link rel="stylesheet" href="{% static 'stylesheets/bootstrap.min.css' %}"/>
 	<link rel="stylesheet" href="{% static 'stylesheets/style.css' %}"/>
+
 </head>
 <body>
-	<h1>That Snake Game</h1>
-	<p>Grow your snake the longest length</p>
-	<h3>Select Your Difficulty</h3>
-	<button id="normal">Start Normal Game</button>
-	<button id="harder">Start Hard Mode</button>
-	<button id="hardest">Start Hell Mode</button>
-	<h3>To start the game, please click on the button to begin</h3>
+	<div class="container">
+
+		{% include 'navbar.html' %}
 
 
-    <canvas id="canvas" width="400" height="400"></canvas>
+		{% block content %}
+
+		{% endblock content %}
+	</div>
+
+	<script src="{% static "js/bootstrap.min.js" %}" type="text/javascript"></script>
 
 </body>
 </html>

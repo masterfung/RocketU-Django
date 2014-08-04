@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% block title %}
+	Game
+{% endblock title %}
+
+{% block content %}
+
+	<h1>That Snake Game</h1>
+		<p>Grow your snake the longest length</p>
+		<h3>Select Your Difficulty</h3>
+		<button class="btn btn-primary" id="normal">Start Normal Game</button>
+		<button class="btn btn-primary" id="harder">Start Hard Mode</button>
+		<button class="btn btn-primary" id="hardest">Start Hell Mode</button>
+		<h3>To start the game, please click on the button to begin</h3>
+
+
+	    <canvas id="canvas" width="400" height="400"></canvas>
+
+{% endblock content %}

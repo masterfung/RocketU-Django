@@ -247,7 +247,17 @@ $(document).ready(function () {
 		    clearInterval(gameLoopInterval);
 			scoreChart.push(score);
 			largestScore = Math.max.apply(Math, scoreChart);
-			console.log(scoreChart);
+			$.ajax({
+				url: '/',
+				type: 'POST',
+				dataType: 'json',
+				data: largestScore,
+				success: function (response) {
+					console.log(response);
+				}, error: function (response) {
+					console.log(response)
+				}
+			});
 			alert('Game Over!');
 			userInput = confirm('Do you want to play again?');
 			if (userInput == true) {

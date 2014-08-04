@@ -97,6 +97,12 @@ MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = '/'
 
+ACCOUNT_ACTIVATION_DAYS = 7
+# EMAIL_HOST = 'localhost'
+# DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
+AUTH_PROFILE_MODULE = 'registration.RegistrationProfile'
+
 TEMPLATE_DIRS = (
 	os.path.join(SITE_ROOT, "templates"),
 )

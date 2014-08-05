@@ -247,16 +247,22 @@ $(document).ready(function () {
 		    clearInterval(gameLoopInterval);
 			scoreChart.push(score);
 			largestScore = Math.max.apply(Math, scoreChart);
+			var dataToPOST = {
+				high_score: largestScore,
+				choice_of_game: "SK"
+			};
+			data = JSON.stringify(dataToPOST);
 			$.ajax({
-				url: '/',
+				url: '/leaderboard/snake',
 				type: 'POST',
 				dataType: 'json',
-				data: largestScore,
+				data: data,
 				success: function (response) {
 					console.log(response);
 				}, error: function (response) {
 					console.log(response)
 				}
+
 			});
 			alert('Game Over!');
 			userInput = confirm('Do you want to play again?');
@@ -283,6 +289,19 @@ $(document).ready(function () {
 		gameSpeed = 15;
 		gamePlay()
 	});
+	$.ajax({
+		url:'/score_return/',
+		type: 'GET',
+		datatype:'html',
+		success: function(data){
+			console.log(data);
+//			$('.container').append(data);
+		},
+		error: function(data){
+			console.log(data);
+		}
+	})
+
 
 });
 

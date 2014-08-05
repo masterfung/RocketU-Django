@@ -18,7 +18,8 @@ urlpatterns = patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^game/$', 'game.views.game', name='game'),
-    url(r'^leaderboard/$', 'game.views.leaderboard', name='leaderboard'),
+    url(r'^leaderboard/$', 'game.views.user_scores', name='leaderboard'),
+    url(r'^leaderboard/snake$', 'game.views.leaderboard_snake', name='leaderboard_snake'),
     url(r'^score_return/$', 'game.views.score_return', name='score_return'),
 
 )

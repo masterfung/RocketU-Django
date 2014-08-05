@@ -67,14 +67,5 @@ def leaderboard_snake(request):
 	                    content_type='application.json')
 
 def user_scores(request):
-	lead_score = ScoreKeeping.objects.all()
-	collection = {}
-	for score in lead_score:
-		collection = {
-			'game_name': score.choice_of_game,
-			'high_score': score.high_score,
-			'username': score.user_id,
-			'date': score.time
-		}
-
+	lead_score = ScoreKeeping.objects.all().order_by('-high_score')
 	return render(request, 'leaderboard.html', {'lead_score': lead_score})

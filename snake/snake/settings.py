@@ -18,7 +18,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -44,7 +43,8 @@ INSTALLED_APPS = (
 	'django.contrib.staticfiles',
 	'south',
 	'game',
-    'registration',
+	'registration',
+	'bcrypt',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,6 +60,17 @@ ROOT_URLCONF = 'snake.urls'
 
 WSGI_APPLICATION = 'snake.wsgi.application'
 
+# PASSWORD HASHERS
+
+PASSWORD_HASHERS = (
+	'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+	'django.contrib.auth.hashers.BCryptPasswordHasher',
+	'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+	'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+	'django.contrib.auth.hashers.SHA1PasswordHasher',
+	'django.contrib.auth.hashers.MD5PasswordHasher',
+	'django.contrib.auth.hashers.CryptPasswordHasher',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -98,8 +109,10 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
-# EMAIL_HOST = 'localhost'
-# DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'Djangorockstar@gmail.com'
+EMAIL_HOST_PASSWORD = 'Djangorockstar#123'
 
 AUTH_PROFILE_MODULE = 'registration.RegistrationProfile'
 

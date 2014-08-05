@@ -30,7 +30,7 @@ def game(request):
 # def leaderboard(request):
 # 	return render(request, 'leaderboard.html')
 
-
+@login_required
 def score_return(request):
 	lead_score = ScoreKeeping.objects.all()
 	collection = []
@@ -65,6 +65,7 @@ def leaderboard_snake(request):
 		}
 	return HttpResponse(json.dumps(snake, cls=DjangoJSONEncoder),
 	                    content_type='application.json')
+
 
 def user_scores(request):
 	lead_score = ScoreKeeping.objects.all().order_by('-high_score')

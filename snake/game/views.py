@@ -77,4 +77,4 @@ def user_scores(request):
 			'date': score.time
 		}
 
-	return render(request, 'leaderboard.html', collection)
+	return render(request, 'leaderboard.html', {'lead_score': lead_score})

@@ -5,19 +5,20 @@
 {% endblock title %}
 
 {% block content %}
+	<h1>Snake Board Rankings:</h1>
+	{% for i in lead_score %}
 
-{#	{% for i in collection %}#}
 	   <p>
-	        Username: {{ username }}
+	        Username: {{ i.user }}
 	   </p>
 		<p>
-			Score: {{ high_score }}
+			Score: {{ i.high_score }}
 		</p>
 		<p>
-			Game: {{ game_name }}
+			Game: {{ i.choice_of_game }}
 		</p>
 
-{#	{% endfor %}#}
+	{% endfor %}
 {#	<div class="container"></div>#}
 
 {% endblock content %}

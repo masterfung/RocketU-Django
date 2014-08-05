@@ -1,8 +1,9 @@
 import json
 from django.contrib.auth.decorators import login_required
 from django.core.serializers.json import DjangoJSONEncoder
+from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponse
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
@@ -20,7 +21,8 @@ def login(request):
 
 def logout(request):
 	"""Logs out user"""
-	return render(request, 'registration/logout.html')
+	auth_logout(request)
+	return redirect('/')
 
 @login_required
 def game(request):
@@ -43,7 +45,7 @@ def score_return(request):
 
 		})
 	return HttpResponse(json.dumps(collection, cls=DjangoJSONEncoder),
-	                    content_type='application.json')
+						content_type='application.json')
 
 
 @csrf_exempt
@@ -64,9 +66,15 @@ def leaderboard_snake(request):
 			'time': score.time
 		}
 	return HttpResponse(json.dumps(snake, cls=DjangoJSONEncoder),
-	                    content_type='application.json')
+						content_type='application.json')
 
 
 def user_scores(request):
-	lead_score = ScoreKeeping.objects.all().order_by('-high_score')
+	lead_score = ScoreKeeping.objects.all().order_by('-high_score')[:20]
 	return render(request, 'leaderboard.html', {'lead_score': lead_score})
+
+def match_game(request):
+	data = {
+		"user": request.user
+	}
+	return render(request, "match.html", data)

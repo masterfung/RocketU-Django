@@ -64,7 +64,7 @@ class FormTestCase(TestCase):
             form.clean_username()
 
     def test_clean_username(self):
-        #review this again!
+        # review this again!
         # set up the form for testing
         form = EmailUserCreationForm()
         form.cleaned_data = {'username': 'test-user'}
@@ -79,7 +79,7 @@ class ViewTestCase(TestCase):
 
     def test_home_page(self):
         response = self.client.get(reverse('home'))
-        #finds the route based on home
+        # finds the route based on home
         self.assertIn('<p>Suit: spade, Rank: two</p>', response.content)
         self.assertEqual(response.context['cards'].count(), 52)
 
@@ -101,10 +101,10 @@ class ViewTestCase(TestCase):
         # Check it's a redirect to the profile page
         self.assertIsInstance(response, HttpResponseRedirect)
         self.assertTrue(response.get('location').endswith(reverse('profile')))
-        #look to see if this can be simplified
+        # look to see if this can be simplified
 
     def create_war_game(self, user, result=WarGame.LOSS):
-        #helper method/make sure the naming does not have test in the beginning
+        # helper method/make sure the naming does not have test in the beginning
         WarGame.objects.create(result=result, player=user)
 
     def test_profile_page(self):
@@ -134,10 +134,6 @@ class ViewTestCase(TestCase):
 
     def test_login_page(self):
         user = Player.objects.create_user(username='test', email='test@test.com', password='test')
-        data = {
-            'username': user.username,
-            'password': user.password,
-        }
         # response = self.client.post(reverse('login'), data)
         # self.assertIsInstance(HttpResponseRedirect, response) #this line is not working fully
         self.assertTrue(user.is_authenticated())

@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, redirect
@@ -77,12 +76,7 @@ def register(request):
     if request.method == 'POST':
         form = EmailUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            # text_content = 'Thank you for signing up for our website, {}'.format(user.username)
-            # html_content = '<h2>Thanks {} for signing up!</h2> <div>I hope you enjoy using our site</div>'.format(user.username)
-            # msg = EmailMultiAlternatives("Welcome!", text_content, settings.DEFAULT_FROM_EMAIL, [user.email])
-            # msg.attach_alternative(html_content, "text/html")
-            # msg.send()
+            form.save()
             return redirect("profile")
     else:
         form = EmailUserCreationForm()

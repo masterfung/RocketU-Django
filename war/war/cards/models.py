@@ -68,4 +68,3 @@ class WarGame(models.Model):
 
     result = models.IntegerField(choices=RESULTS)
     player = models.ForeignKey(Player)
-

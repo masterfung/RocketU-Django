@@ -93,7 +93,7 @@ class ViewTestCase(TestCase):
         }
         response = self.client.post(reverse('register'),
                                     data)
-        #.client handles the interaction of url to post all the info
+        # .client handles the interaction of url to post all the info
 
         # Check this user was created in the database
         self.assertTrue(Player.objects.filter(username=username).exists())

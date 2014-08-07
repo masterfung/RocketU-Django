@@ -110,17 +110,22 @@ class ViewTestCase(TestCase):
     def test_profile_page(self):
         # Create user and log them in
         password = 'passsword'
-        user = Player.objects.create_user(username='test-user', email='test@test.com', password=password)
+        user = Player.objects.create_user(username='test-user', email='test@test.com', password='password')
         self.client.login(username=user.username, password=password)
 
         # Set up some war game entries
         self.create_war_game(user)
+        self.create_war_game(user)
+        self.create_war_game(user)
+        self.create_war_game(user, WarGame.WIN)
         self.create_war_game(user, WarGame.WIN)
 
         # Make the url call and check the html and games queryset length
         response = self.client.get(reverse('profile'))
-        self.assertInHTML('<p>Your email address is {}</p>'.format(user.email), response.content)
-        self.assertEqual(len(response.context['games']), 2)
+        self.assertInHTML('<p>Hi {}, you have 2 wins and 3 loses.</p>'.format(user.username), response.content)
+        self.assertEqual(len(response.context['games']), 5)
+        # self.assertEqual(len(response.context['wins']), 2)
+        # self.assertEqual(len(response.context['losses']), 3)
 
     def test_faq_exist(self):
         response = self.client.get(reverse('faq'))
@@ -137,6 +142,19 @@ class ViewTestCase(TestCase):
         # response = self.client.post(reverse('login'), data)
         # self.assertIsInstance(HttpResponseRedirect, response) #this line is not working fully
         self.assertTrue(user.is_authenticated())
+
+    def test_get_wins(self):
+        user = Player.objects.create_user(username='test-user', email='test@test.com', password='password')
+        self.create_war_game(user, WarGame.WIN)
+        self.create_war_game(user, WarGame.WIN)
+        self.assertEqual(user.get_wins(), 2)
+
+    def test_get_losses(self):
+        user = Player.objects.create_user(username='test-user', email='test@test.com', password='password')
+        self.create_war_game(user, WarGame.LOSS)
+        self.create_war_game(user, WarGame.LOSS)
+        self.create_war_game(user, WarGame.LOSS)
+        self.assertEqual(user.get_losses(), 3)
 
 
 class SyntaxTest(TestCase):

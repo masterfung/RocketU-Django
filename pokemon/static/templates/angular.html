@@ -6,21 +6,27 @@ Angular Pokemon
 
 
 {% block content %}
+
 <div class="spacing-buffer"></div>
 <div class="container">
 	<div class="row">
-		<h1 class="text-center">Angular</h1>
+		<div ng-app="etsyApp">
+			<h1 class="text-center">Angular Etsy</h1>
 
-		<button class="random btn btn-default">Get Random Team</button>
-	    <button class="store btn btn-primary">Save Team</button>
+{#		    <button class="store btn btn-primary">Save Team</button>#}
 
-		<div ng-model="pokemonApp">
-			<div ng-controller="pokemonCtrl as pokemon">
 
-			</div>
+				<div ng-controller="etsyCtrl">
+					<button ng-click="retrieveList()" class="btn btn-default">Get Random Team</button>
+				</div>
+
+				<div ng-repeat="item in etsySelection track by $index">
+
+					<p>{{ item.description }}</p>
+
+				</div>
 		</div>
 	</div>
 </div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
 {% endblock content %}

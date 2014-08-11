@@ -19,6 +19,10 @@ def tinder(request):
 
 def upcoming(request):
     return render(request, 'upcoming.html')
+
+def angular(request):
+    return render(request, 'angular.html')
+
 #
 # @csrf_exempt
 # def new_movie_json(request):

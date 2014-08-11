@@ -20,5 +20,6 @@ urlpatterns = patterns('',
     url(r'^all_favorites/$', 'tomatoes.views.all_favorites', name='all_favorites'),
 
     url(r'^upcoming/$', 'tomatoes.views.upcoming', name='upcoming'),
+    url(r'^angular/$', 'tomatoes.views.angular', name='angular'),
 
 )

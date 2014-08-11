@@ -43,24 +43,23 @@ $(document).ready(function(){
                 dataType: "jsonp",
                 success: function(data) {
                     var newPokemon = {};
-                    newPokemon.name = data.name;
+                    newPokemon.name = data.pokemon.name;
                     newPokemon.pokedex_id = data.id - 1;
                     newPokemon.image = data.image;
                     team.members.push(newPokemon);
 //                    console.log(team.length);
-//                    console.log(pokemon);
+                    console.log(data);
+                    console.log(newPokemon);
 
                 var spriteUrl = 'http://pokeapi.co' + newPokemon.image;
 
                 $('.pokemon')
-                .append("<div class='pokebox'><div class='selection inactive'><img src=" + spriteUrl + "/>" +
-                    "<p class='name'>" + newPokemon.name.charAt(0).toUpperCase() + newPokemon.name.substr(1).toLowerCase() + "</p></div></div>");
-//                .append("<div class='pokebox'><div class='field inactive'><img src=" + spriteUrl + "/>" +
-//                    "<p class='name'>" + pokemon.name.charAt(0).toUpperCase() + pokemon.name.substr(1).toLowerCase() + "</p></div></div>");
-
+                .append("<div class='pokebox table-bordered'>" +
+		                "<div class='selection inactive'><img src=" + spriteUrl + "/>" +
+                    "<p class='name'> <strong>Name</strong>: " + newPokemon.name.charAt(0).toUpperCase() + newPokemon.name.substr(1).toLowerCase() + "</p></div></div>");
             },
             error: function(response) {
-//                console.log(response);
+                console.log(response);
             }
         });
     });

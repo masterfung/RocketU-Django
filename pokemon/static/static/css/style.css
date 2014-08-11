@@ -1,0 +1,17 @@
+.spacing-buffer {
+	margin-top: 75px;
+}
+
+
+.pokebox {
+	float: left;
+	width: 200px;
+	height: 150px;
+	text-align: center;
+}
+
+.selection {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}

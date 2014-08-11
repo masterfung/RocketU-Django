@@ -10,7 +10,10 @@ from game.models import Pokemon, Team
 
 
 def home(request):
-    return render_to_response('base.html', locals(), context_instance=RequestContext(request))
+    return render(request, 'ajax.html')
+
+def angular(request):
+    return render(request, 'angular.html')
 
 @csrf_exempt
 def all_pokemon(request):

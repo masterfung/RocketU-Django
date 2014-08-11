@@ -6,21 +6,23 @@
     <meta charset="UTF-8">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{% static 'js/index.js' %}"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
 
-{% block content %}
-<h1>Welcome to this world!</h1>
-    <button class="generate">Get Random Team</button>
-    <button class="save">Save Team</button>
-    <div class="pokemon">
+{% block navbar %}
+	{% include 'navbar.html' %}
+{% endblock navbar %}
 
-    </div>
+
+{% block content %}
+
 
 {% endblock content %}
 
-
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>

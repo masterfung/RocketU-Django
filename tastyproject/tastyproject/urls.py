@@ -1,14 +1,19 @@
+from django.conf import settings
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 
 from django.contrib import admin
 from tastypie.api import Api
-from registrar.api.resources import StudentResource, ClassResource
+from djangular.api.resources import MediaResource
+from registrar.api.resources import StudentResource, ClassResource, StudentProjectResource
 
 admin.autodiscover()
 
 v1_api = Api(api_name="v1")
 v1_api.register(StudentResource())
 v1_api.register(ClassResource())
+v1_api.register(StudentProjectResource())
+v1_api.register(MediaResource())
 
 urlpatterns = patterns('',
     # Examples:
@@ -17,4 +22,11 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(v1_api.urls)),
+    url(r'api/doc/', include('tastypie_swagger.urls', namespace='tastypie_swagger'),
+    kwargs={"tastypie_api_module": "v1_api",
+            "namespace": "tastypie_swagger"}
+    ),
 )
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

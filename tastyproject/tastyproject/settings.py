@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'tastypie',
     'south',
     'registrar',
+    'tastypie_swagger',
+    'djangular',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,6 +100,8 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static-only')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
+
+TASTYPIE_SWAGGER_API_MODULE = 'tastyproject.urls.v1_api'
 
 try:
 	from local_settings import *

@@ -1,7 +1,15 @@
 /**
  * Created by htm on 8/11/14.
  */
-var rotten = angular.module('rottenApp', []);
+var rotten = angular.module('rottenApp', [
+	'ngRoute'
+]);
+//.config(function ($routeProvider) {
+//	$routeProvider.when('/../', {
+//		templateUrl: 'templates/get_movie.html',
+//		controller: 'movieCtrl'
+//	})
+//});
 
 rotten.factory('MovieApi', function () {
 	return '88a8qpv9kwg657jxb97ma5nn';
@@ -23,16 +31,19 @@ rotten.controller('upcomingCtrl', function ($scope, $http, MovieApi) {
 		 var changeImage = image.replace('_tmb', '_det');
 		 $scope.rottenImage.push(changeImage);
 	 }
-	})
+	});
+	$scope.displayIndividual = function (index) {
+		$scope.rottenList(index)
+	};
 });
 
-rotten.controller('movieCtrl', function ($scope, $http) {
+rotten.controller('movieCtrl', function ($scope, $http, MovieApi) {
 	$scope.titles = [];
 	$scope.retrieveMovies = function () {
 		$http.jsonp(
 		 'http://api.rottentomatoes.com/api/public/v1.0/movies', {
 				params: {
-					apikey: '88a8qpv9kwg657jxb97ma5nn',
+					apikey: MovieApi,
 					q: $scope.movies,
 					page_limit: '10',
 					callback: 'JSON_CALLBACK'
@@ -52,3 +63,8 @@ rotten.controller('movieCtrl', function ($scope, $http) {
 	};
 
 });
+
+rotten.controller('similarCtrl', function ($scope, $http) {
+	$scope.similar = [];
+
+})

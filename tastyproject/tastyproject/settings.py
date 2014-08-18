@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     'registrar',
     'tastypie_swagger',
     'djangular',
+    'social.apps.django_app.default',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,7 +53,15 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware'
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
 
 ROOT_URLCONF = 'tastyproject.urls'
 
@@ -102,6 +112,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static-only')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 
 TASTYPIE_SWAGGER_API_MODULE = 'tastyproject.urls.v1_api'
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '557768047685173'
+SOCIAL_AUTH_FACEBOOK_SECRET = '880a7f8ab0ff0796929a098699e46a18'
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'public_profile', 'user_photos']
+
+LOGIN_REDIRECT_URL = 'angular'
+
+LOGIN_URL = 'angular'
 
 try:
 	from local_settings import *

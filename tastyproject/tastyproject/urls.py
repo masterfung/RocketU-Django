@@ -26,6 +26,10 @@ urlpatterns = patterns('',
     kwargs={"tastypie_api_module": "v1_api",
             "namespace": "tastypie_swagger"}
     ),
+    url(r'^$', 'djangular.views.home', name='home'),
+    url(r'^a/$', 'djangular.views.angular', name='angular'),
+	url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
 )
 
 if settings.DEBUG:

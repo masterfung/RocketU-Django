@@ -1,6 +1,6 @@
 ## The following requirements were added by pip --freeze:
 Django==1.6.5
-Pillow==2.5.1
+Pillow==12.3.0
 South==1.0
 coverage==3.7.1
 pep8==1.5.7
